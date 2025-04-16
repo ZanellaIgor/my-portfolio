@@ -2,8 +2,9 @@ import type React from 'react';
 import type { Metadata } from 'next';
 
 import './globals.css';
-import { cn } from '@/lib/utils';
-import { ThemeProvider } from '@/components/theme-provider';
+
+import { ThemeProvider } from '../components/theme-provider';
+import { cn } from '../lib/utils';
 
 export const metadata: Metadata = {
   title: 'Portfólio Profissional | Desenvolvedor Full Stack',

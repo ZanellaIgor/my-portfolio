@@ -1,9 +1,9 @@
-"use client"
+'use client';
 
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Download } from "lucide-react"
+import { motion } from 'framer-motion';
+import { Card, CardContent } from './ui/card';
+import { Button } from './ui/button';
+import { Download } from 'lucide-react';
 
 export function About() {
   return (
@@ -17,7 +17,9 @@ export function About() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-bold tracking-tight mb-2">Sobre Mim</h2>
-          <p className="text-muted-foreground">Conheça um pouco da minha trajetória profissional</p>
+          <p className="text-muted-foreground">
+            Conheça um pouco da minha trajetória profissional
+          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-[2fr_1fr] gap-8">
@@ -30,26 +32,32 @@ export function About() {
             <Card>
               <CardContent className="p-6 space-y-4">
                 <p>
-                  Sou um desenvolvedor web full stack apaixonado por criar experiências digitais intuitivas e
-                  impactantes. Com mais de 5 anos de experiência no desenvolvimento de aplicações web, tenho trabalhado
-                  com as tecnologias mais modernas do mercado.
+                  Sou um desenvolvedor web full stack apaixonado por criar
+                  experiências digitais intuitivas e impactantes. Com mais de 5
+                  anos de experiência no desenvolvimento de aplicações web,
+                  tenho trabalhado com as tecnologias mais modernas do mercado.
                 </p>
 
                 <p>
-                  Minha jornada começou com HTML, CSS e JavaScript, e desde então venho me especializando em frameworks
-                  como React, Next.js e Node.js. Acredito que o bom código não é apenas aquele que funciona, mas o que é
-                  legível, manutenível e escalável.
+                  Minha jornada começou com HTML, CSS e JavaScript, e desde
+                  então venho me especializando em frameworks como React,
+                  Next.js e Node.js. Acredito que o bom código não é apenas
+                  aquele que funciona, mas o que é legível, manutenível e
+                  escalável.
                 </p>
 
                 <p>
-                  Tenho experiência em liderar equipes de desenvolvimento e implementar metodologias ágeis para otimizar
-                  processos. Meu objetivo é sempre entregar soluções que não apenas atendam às necessidades do cliente,
-                  mas que superem suas expectativas.
+                  Tenho experiência em liderar equipes de desenvolvimento e
+                  implementar metodologias ágeis para otimizar processos. Meu
+                  objetivo é sempre entregar soluções que não apenas atendam às
+                  necessidades do cliente, mas que superem suas expectativas.
                 </p>
 
                 <p>
-                  Além do desenvolvimento, sou um entusiasta de UX/UI, acessibilidade web e performance. Acredito que
-                  esses aspectos são fundamentais para criar produtos digitais verdadeiramente inclusivos e eficientes.
+                  Além do desenvolvimento, sou um entusiasta de UX/UI,
+                  acessibilidade web e performance. Acredito que esses aspectos
+                  são fundamentais para criar produtos digitais verdadeiramente
+                  inclusivos e eficientes.
                 </p>
               </CardContent>
             </Card>
@@ -101,5 +109,5 @@ export function About() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,74 +1,80 @@
-"use client"
+'use client';
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { motion } from 'framer-motion';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from './ui/card';
+import { Badge } from './ui/badge';
+import { Progress } from './ui/progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 
 // Skill data
 const skillCategories = [
   {
-    id: "frontend",
-    name: "Frontend",
+    id: 'frontend',
+    name: 'Frontend',
     skills: [
-      { name: "HTML5", level: 95 },
-      { name: "CSS3", level: 90 },
-      { name: "JavaScript", level: 92 },
-      { name: "TypeScript", level: 85 },
-      { name: "React", level: 90 },
-      { name: "Next.js", level: 88 },
-      { name: "TailwindCSS", level: 85 },
-      { name: "Framer Motion", level: 75 },
+      { name: 'HTML5', level: 95 },
+      { name: 'CSS3', level: 90 },
+      { name: 'JavaScript', level: 92 },
+      { name: 'TypeScript', level: 85 },
+      { name: 'React', level: 90 },
+      { name: 'Next.js', level: 88 },
+      { name: 'TailwindCSS', level: 85 },
+      { name: 'Framer Motion', level: 75 },
     ],
   },
   {
-    id: "backend",
-    name: "Backend",
+    id: 'backend',
+    name: 'Backend',
     skills: [
-      { name: "Node.js", level: 88 },
-      { name: "Express", level: 85 },
-      { name: "NestJS", level: 80 },
-      { name: "Python", level: 75 },
-      { name: "Django", level: 70 },
-      { name: "GraphQL", level: 78 },
-      { name: "REST API", level: 90 },
+      { name: 'Node.js', level: 88 },
+      { name: 'Express', level: 85 },
+      { name: 'NestJS', level: 80 },
+      { name: 'Python', level: 75 },
+      { name: 'Django', level: 70 },
+      { name: 'GraphQL', level: 78 },
+      { name: 'REST API', level: 90 },
     ],
   },
   {
-    id: "database",
-    name: "Banco de Dados",
+    id: 'database',
+    name: 'Banco de Dados',
     skills: [
-      { name: "MongoDB", level: 85 },
-      { name: "PostgreSQL", level: 82 },
-      { name: "MySQL", level: 80 },
-      { name: "Redis", level: 75 },
-      { name: "Firebase", level: 78 },
+      { name: 'MongoDB', level: 85 },
+      { name: 'PostgreSQL', level: 82 },
+      { name: 'MySQL', level: 80 },
+      { name: 'Redis', level: 75 },
+      { name: 'Firebase', level: 78 },
     ],
   },
   {
-    id: "devops",
-    name: "DevOps",
+    id: 'devops',
+    name: 'DevOps',
     skills: [
-      { name: "Git", level: 90 },
-      { name: "Docker", level: 80 },
-      { name: "CI/CD", level: 78 },
-      { name: "AWS", level: 75 },
-      { name: "Vercel", level: 85 },
+      { name: 'Git', level: 90 },
+      { name: 'Docker', level: 80 },
+      { name: 'CI/CD', level: 78 },
+      { name: 'AWS', level: 75 },
+      { name: 'Vercel', level: 85 },
     ],
   },
   {
-    id: "tools",
-    name: "Ferramentas",
+    id: 'tools',
+    name: 'Ferramentas',
     skills: [
-      { name: "VS Code", level: 95 },
-      { name: "Figma", level: 80 },
-      { name: "Jira", level: 85 },
-      { name: "Postman", level: 90 },
-      { name: "Webpack", level: 78 },
+      { name: 'VS Code', level: 95 },
+      { name: 'Figma', level: 80 },
+      { name: 'Jira', level: 85 },
+      { name: 'Postman', level: 90 },
+      { name: 'Webpack', level: 78 },
     ],
   },
-]
+];
 
 export function Skills() {
   return (
@@ -81,8 +87,12 @@ export function Skills() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tight mb-2">Habilidades Técnicas</h2>
-          <p className="text-muted-foreground">Tecnologias e ferramentas que utilizo no dia a dia</p>
+          <h2 className="text-3xl font-bold tracking-tight mb-2">
+            Habilidades Técnicas
+          </h2>
+          <p className="text-muted-foreground">
+            Tecnologias e ferramentas que utilizo no dia a dia
+          </p>
         </motion.div>
 
         <motion.div
@@ -105,7 +115,9 @@ export function Skills() {
                 <Card>
                   <CardHeader>
                     <CardTitle>{category.name}</CardTitle>
-                    <CardDescription>Minhas habilidades em {category.name.toLowerCase()}</CardDescription>
+                    <CardDescription>
+                      Minhas habilidades em {category.name.toLowerCase()}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="grid gap-6">
@@ -143,10 +155,11 @@ export function Skills() {
           className="mt-12 text-center"
         >
           <p className="text-muted-foreground">
-            Sempre em constante aprendizado e aprimoramento de minhas habilidades técnicas.
+            Sempre em constante aprendizado e aprimoramento de minhas
+            habilidades técnicas.
           </p>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,70 +1,77 @@
-"use client"
+'use client';
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { GraduationCap, Calendar, Award } from "lucide-react"
+import { motion } from 'framer-motion';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from './ui/card';
+import { Badge } from './ui/badge';
+import { GraduationCap, Calendar, Award } from 'lucide-react';
 
 // Education data
 const educations = [
   {
     id: 1,
-    institution: "Universidade Federal de Tecnologia",
-    degree: "Bacharelado em Ciência da Computação",
-    period: "2013 - 2017",
+    institution: 'Universidade Federal de Tecnologia',
+    degree: 'Bacharelado em Ciência da Computação',
+    period: '2013 - 2017',
     description:
-      "Formação completa em Ciência da Computação com foco em desenvolvimento de software, algoritmos e estruturas de dados.",
+      'Formação completa em Ciência da Computação com foco em desenvolvimento de software, algoritmos e estruturas de dados.',
     highlights: [
-      "Projeto de conclusão de curso sobre otimização de algoritmos",
-      "Participação em maratona de programação",
-      "Monitoria em disciplinas de programação",
+      'Projeto de conclusão de curso sobre otimização de algoritmos',
+      'Participação em maratona de programação',
+      'Monitoria em disciplinas de programação',
     ],
   },
   {
     id: 2,
-    institution: "Tech Academy",
-    degree: "Especialização em Desenvolvimento Web Full Stack",
-    period: "2018 - 2019",
-    description: "Curso intensivo focado em tecnologias modernas para desenvolvimento web full stack.",
+    institution: 'Tech Academy',
+    degree: 'Especialização em Desenvolvimento Web Full Stack',
+    period: '2018 - 2019',
+    description:
+      'Curso intensivo focado em tecnologias modernas para desenvolvimento web full stack.',
     highlights: [
-      "Desenvolvimento de projetos práticos com React e Node.js",
-      "Implementação de APIs RESTful e GraphQL",
-      "Trabalho em equipe utilizando metodologias ágeis",
+      'Desenvolvimento de projetos práticos com React e Node.js',
+      'Implementação de APIs RESTful e GraphQL',
+      'Trabalho em equipe utilizando metodologias ágeis',
     ],
   },
-]
+];
 
 // Certification data
 const certifications = [
   {
     id: 1,
-    name: "AWS Certified Developer - Associate",
-    issuer: "Amazon Web Services",
-    date: "2022",
-    credentialId: "AWS-DEV-12345",
+    name: 'AWS Certified Developer - Associate',
+    issuer: 'Amazon Web Services',
+    date: '2022',
+    credentialId: 'AWS-DEV-12345',
   },
   {
     id: 2,
-    name: "Professional Scrum Master I (PSM I)",
-    issuer: "Scrum.org",
-    date: "2021",
-    credentialId: "PSM-12345",
+    name: 'Professional Scrum Master I (PSM I)',
+    issuer: 'Scrum.org',
+    date: '2021',
+    credentialId: 'PSM-12345',
   },
   {
     id: 3,
-    name: "MongoDB Certified Developer",
-    issuer: "MongoDB University",
-    date: "2020",
-    credentialId: "MCD-12345",
+    name: 'MongoDB Certified Developer',
+    issuer: 'MongoDB University',
+    date: '2020',
+    credentialId: 'MCD-12345',
   },
   {
     id: 4,
-    name: "React Developer Certification",
-    issuer: "Meta",
-    date: "2021",
-    credentialId: "RDC-12345",
+    name: 'React Developer Certification',
+    issuer: 'Meta',
+    date: '2021',
+    credentialId: 'RDC-12345',
   },
-]
+];
 
 export function Education() {
   return (
@@ -77,8 +84,12 @@ export function Education() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tight mb-2">Formação Acadêmica</h2>
-          <p className="text-muted-foreground">Minha educação formal e certificações profissionais</p>
+          <h2 className="text-3xl font-bold tracking-tight mb-2">
+            Formação Acadêmica
+          </h2>
+          <p className="text-muted-foreground">
+            Minha educação formal e certificações profissionais
+          </p>
         </motion.div>
 
         <div className="grid gap-8">
@@ -142,12 +153,16 @@ export function Education() {
                   {certifications.map((cert) => (
                     <div key={cert.id} className="flex flex-col">
                       <h4 className="font-medium">{cert.name}</h4>
-                      <p className="text-sm text-muted-foreground">{cert.issuer}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {cert.issuer}
+                      </p>
                       <div className="flex items-center mt-1 text-sm">
                         <Calendar className="mr-1 h-3 w-3" />
                         <span>{cert.date}</span>
                       </div>
-                      <p className="text-xs text-muted-foreground mt-1">ID: {cert.credentialId}</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        ID: {cert.credentialId}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -157,5 +172,5 @@ export function Education() {
         </div>
       </div>
     </section>
-  )
+  );
 }
