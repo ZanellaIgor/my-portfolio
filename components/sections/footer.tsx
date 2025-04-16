@@ -1,8 +1,8 @@
-import Link from "next/link"
-import { Github, Linkedin, Mail } from "lucide-react"
+import Link from 'next/link';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-muted py-8 mt-16">
@@ -12,7 +12,9 @@ export function Footer() {
             <Link href="#hero" className="text-lg font-bold">
               <span className="text-primary">Dev</span>Portfolio
             </Link>
-            <p className="text-sm text-muted-foreground mt-1">© {currentYear} Todos os direitos reservados</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              © {currentYear} Todos os direitos reservados
+            </p>
           </div>
 
           <div className="flex items-center gap-4">
@@ -45,5 +47,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

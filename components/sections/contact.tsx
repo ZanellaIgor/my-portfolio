@@ -1,59 +1,74 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
-import { useToast } from "@/hooks/use-toast"
-import { Copy, Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react"
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '../ui/card';
+import { Input } from '../ui/input';
+import { Textarea } from '../ui/textarea';
+import { Button } from '../ui/button';
+import { Label } from '../ui/label';
+import { useToast } from '@/hooks/use-toast';
+
+import {
+  Copy,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Send,
+} from 'lucide-react';
 
 export function Contact() {
-  const { toast } = useToast()
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
-      title: "Mensagem enviada!",
-      description: "Obrigado pelo contato. Retornarei em breve.",
-    })
+      title: 'Mensagem enviada!',
+      description: 'Obrigado pelo contato. Retornarei em breve.',
+    });
 
     setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    })
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    });
 
-    setIsSubmitting(false)
-  }
+    setIsSubmitting(false);
+  };
 
   const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text)
+    navigator.clipboard.writeText(text);
     toast({
-      title: "Copiado!",
-      description: "Informação copiada para a área de transferência.",
-    })
-  }
+      title: 'Copiado!',
+      description: 'Informação copiada para a área de transferência.',
+    });
+  };
 
   return (
     <section id="contact" className="py-20 bg-muted/50">
@@ -66,7 +81,9 @@ export function Contact() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-bold tracking-tight mb-2">Contato</h2>
-          <p className="text-muted-foreground">Entre em contato para conversarmos sobre seu projeto</p>
+          <p className="text-muted-foreground">
+            Entre em contato para conversarmos sobre seu projeto
+          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-[1fr_1.5fr] gap-8">
@@ -79,19 +96,24 @@ export function Contact() {
             <Card>
               <CardHeader>
                 <CardTitle>Informações de Contato</CardTitle>
-                <CardDescription>Fique à vontade para entrar em contato através dos canais abaixo</CardDescription>
+                <CardDescription>
+                  Fique à vontade para entrar em contato através dos canais
+                  abaixo
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex items-start">
                   <Mail className="h-5 w-5 mr-3 text-primary" />
                   <div>
                     <h3 className="text-sm font-medium">Email</h3>
-                    <p className="text-sm text-muted-foreground">contato@exemplo.com</p>
+                    <p className="text-sm text-muted-foreground">
+                      contato@exemplo.com
+                    </p>
                     <Button
                       variant="ghost"
                       size="sm"
                       className="h-7 px-2 mt-1"
-                      onClick={() => copyToClipboard("contato@exemplo.com")}
+                      onClick={() => copyToClipboard('contato@exemplo.com')}
                     >
                       <Copy className="h-3 w-3 mr-1" />
                       <span className="text-xs">Copiar</span>
@@ -103,12 +125,14 @@ export function Contact() {
                   <Phone className="h-5 w-5 mr-3 text-primary" />
                   <div>
                     <h3 className="text-sm font-medium">Telefone</h3>
-                    <p className="text-sm text-muted-foreground">+55 (11) 98765-4321</p>
+                    <p className="text-sm text-muted-foreground">
+                      +55 (11) 98765-4321
+                    </p>
                     <Button
                       variant="ghost"
                       size="sm"
                       className="h-7 px-2 mt-1"
-                      onClick={() => copyToClipboard("+55 (11) 98765-4321")}
+                      onClick={() => copyToClipboard('+55 (11) 98765-4321')}
                     >
                       <Copy className="h-3 w-3 mr-1" />
                       <span className="text-xs">Copiar</span>
@@ -120,8 +144,12 @@ export function Contact() {
                   <MapPin className="h-5 w-5 mr-3 text-primary" />
                   <div>
                     <h3 className="text-sm font-medium">Localização</h3>
-                    <p className="text-sm text-muted-foreground">São Paulo, SP - Brasil</p>
-                    <p className="text-xs text-muted-foreground">Disponível para trabalho remoto</p>
+                    <p className="text-sm text-muted-foreground">
+                      São Paulo, SP - Brasil
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Disponível para trabalho remoto
+                    </p>
                   </div>
                 </div>
 
@@ -129,12 +157,22 @@ export function Contact() {
                   <h3 className="text-sm font-medium mb-3">Redes Sociais</h3>
                   <div className="flex gap-3">
                     <Button variant="outline" size="icon" asChild>
-                      <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                      <a
+                        href="https://github.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                      >
                         <Github className="h-4 w-4" />
                       </a>
                     </Button>
                     <Button variant="outline" size="icon" asChild>
-                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                      <a
+                        href="https://linkedin.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                      >
                         <Linkedin className="h-4 w-4" />
                       </a>
                     </Button>
@@ -159,7 +197,8 @@ export function Contact() {
               <CardHeader>
                 <CardTitle>Envie uma mensagem</CardTitle>
                 <CardDescription>
-                  Preencha o formulário abaixo e entrarei em contato o mais breve possível
+                  Preencha o formulário abaixo e entrarei em contato o mais
+                  breve possível
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -215,7 +254,11 @@ export function Contact() {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? (
                       <span className="flex items-center">
                         <svg
@@ -254,5 +297,5 @@ export function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }

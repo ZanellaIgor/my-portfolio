@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import { ArrowDown, Github, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -27,7 +27,7 @@ export function Hero() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-              Olá, eu sou <span className="text-primary">Seu Nome</span>
+              Olá, eu sou <span className="text-primary">Igor Zanella.</span>
             </h1>
           </motion.div>
 
@@ -48,9 +48,10 @@ export function Hero() {
             className="max-w-2xl mb-8"
           >
             <p className="text-muted-foreground">
-              Criando soluções digitais inovadoras com foco em experiência do
-              usuário e código de qualidade. Especializado em React, Node.js e
-              arquiteturas modernas de aplicações web.
+              Desenvolvo soluções digitais inovadoras, com foco em performance,
+              experiência do usuário e código limpo. Especializado em
+              React/Next.js, Node.js e arquiteturas modernas para aplicações web
+              escaláveis.
             </p>
           </motion.div>
 

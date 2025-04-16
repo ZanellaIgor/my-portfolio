@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 
 import './globals.css';
 
-import { ThemeProvider } from '../components/theme-provider';
 import { cn } from '../lib/utils';
+import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
   title: 'Portfólio Profissional | Desenvolvedor Full Stack',

@@ -9,9 +9,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from './ui/card';
-import { Badge } from './ui/badge';
-import { Button } from './ui/button';
+} from '../ui/card';
+import { Badge } from '../ui/badge';
+import { Button } from '../ui/button';
 import {
   Dialog,
   DialogContent,
@@ -19,8 +19,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from './ui/dialog';
-import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
+} from '../ui/dialog';
+import { Tabs, TabsList, TabsTrigger } from '../ui/tabs';
 import { ExternalLink, Github, Layers } from 'lucide-react';
 import Image from 'next/image';
 
