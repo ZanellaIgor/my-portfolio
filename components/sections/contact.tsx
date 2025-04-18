@@ -168,7 +168,7 @@ export function Contact() {
                     </Button>
                     <Button variant="outline" size="icon" asChild>
                       <a
-                        href="https://linkedin.com"
+                        href="www.linkedin.com/in/zanella-igor"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="LinkedIn"

@@ -87,7 +87,7 @@ export function Hero() {
             </Button>
             <Button variant="ghost" size="icon" asChild>
               <a
-                href="https://linkedin.com"
+                href="www.linkedin.com/in/zanella-igor"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"

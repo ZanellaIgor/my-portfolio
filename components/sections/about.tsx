@@ -12,26 +12,39 @@ export function About() {
       id="about"
       className="min-h-screen py-24 flex items-center justify-center"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="container max-w-4xl">
+      <div className="container max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
           <h2 className="text-3xl font-bold tracking-tight mb-4">Sobre Mim</h2>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="flex justify-center ">
-              <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-primary">
-                <Image
-                  src="/perfil-1.jpeg"
-                  alt="Foto de perfil"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
+        </motion.div>
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex justify-center"
+          >
+            <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-primary">
+              <Image
+                src="/perfil-1.jpeg"
+                alt="Foto de perfil"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <Card className="bg-muted/50">
               <CardContent className="py-4">
                 <p className="text-lg">
@@ -66,9 +79,9 @@ export function About() {
                 </div>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
