@@ -126,11 +126,7 @@ export default function Education() {
   const sortedYears = sortCertificationsByYear(groupedCertifications);
 
   return (
-    <section
-      id="education"
-      className="py-20"
-      aria-labelledby="education-heading"
-    >
+    <section id="education" className="py-20">
       <div className="container max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
