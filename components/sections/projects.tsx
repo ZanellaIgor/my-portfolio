@@ -103,7 +103,7 @@ const projects = [
     title: 'Amigo Secreto - Sorteio Dinâmico',
     description:
       'Aplicação fullstack para criação de eventos de Amigo Secreto, com suporte a grupos, cadastro de participantes via CPF e acesso individual ao resultado do sorteio.',
-    image: '/amigo-secreto-preview.png',
+    image: '/amigo-secreto.png',
     tags: [
       'Next.js',
       'React.js',

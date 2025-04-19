@@ -11,66 +11,43 @@ import {
 import { Badge } from '../ui/badge';
 import { Briefcase, Calendar } from 'lucide-react';
 
-// Experience data
 const experiences = [
   {
     id: 1,
-    company: 'Tech Solutions Inc.',
-    position: 'Senior Full Stack Developer',
-    period: 'Jan 2021 - Presente',
+    company: 'Windel Sistemas Ltda',
+    position: 'Desenvolvedor Frontend',
+    period: 'Nov 2023 - Presente',
     description:
-      'Lidero o desenvolvimento de aplicações web de alta performance utilizando React, Node.js e arquiteturas de microserviços.',
+      'Atuo no desenvolvimento e manutenção de sistemas internos como ERP e CRM, utilizando Next.js, TypeScript e Material UI.',
     responsibilities: [
-      'Desenvolvimento de aplicações web escaláveis',
-      'Liderança técnica de equipe com 5 desenvolvedores',
-      'Implementação de CI/CD e práticas de DevOps',
+      'Desenvolvimento de interfaces modernas com Next.js e Material UI',
+      'Migração de sistema de Chakra UI para Material UI',
+      'Componentização de interfaces seguindo boas práticas de React',
       'Otimização de performance e experiência do usuário',
+      'Ajustes pontuais e suporte em endpoints desenvolvidos com NestJS',
     ],
     technologies: [
-      'React',
-      'Node.js',
+      'Next.js',
       'TypeScript',
-      'AWS',
-      'Docker',
-      'MongoDB',
+      'Material UI',
+      'React',
+      'NestJS',
+      'Tailwind CSS',
     ],
   },
   {
     id: 2,
-    company: 'Digital Innovations',
-    position: 'Full Stack Developer',
-    period: 'Mar 2019 - Dez 2020',
+    company: 'Windel Sistemas Ltda',
+    position: 'Suporte ao Cliente',
+    period: 'Ago 2022 - Nov 2023',
     description:
-      'Trabalhei no desenvolvimento de soluções web para clientes de diversos segmentos, com foco em e-commerce e sistemas de gestão.',
+      'Prestei suporte técnico ao cliente, analisando problemas e auxiliando na utilização do sistema ERP da empresa.',
     responsibilities: [
-      'Desenvolvimento frontend com React e backend com Node.js',
-      'Implementação de APIs RESTful',
-      'Integração com serviços de terceiros',
-      'Manutenção e otimização de aplicações existentes',
+      'Atendimento técnico ao cliente',
+      'Abertura e acompanhamento de chamados',
+      'Testes e sugestões de melhorias para o sistema',
     ],
-    technologies: ['React', 'Express', 'PostgreSQL', 'Redis', 'GraphQL'],
-  },
-  {
-    id: 3,
-    company: 'WebDev Agency',
-    position: 'Frontend Developer',
-    period: 'Jun 2017 - Fev 2019',
-    description:
-      'Atuei no desenvolvimento de interfaces de usuário responsivas e acessíveis para diversos clientes.',
-    responsibilities: [
-      'Desenvolvimento de interfaces responsivas com HTML, CSS e JavaScript',
-      'Implementação de designs a partir de mockups do Figma',
-      'Otimização de performance frontend',
-      'Testes e debugging cross-browser',
-    ],
-    technologies: [
-      'HTML5',
-      'CSS3',
-      'JavaScript',
-      'jQuery',
-      'SASS',
-      'Bootstrap',
-    ],
+    technologies: ['ERP', 'Suporte técnico', 'Documentação'],
   },
 ];
 
