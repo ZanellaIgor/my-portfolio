@@ -24,8 +24,25 @@ import { Tabs, TabsList, TabsTrigger } from '../ui/tabs';
 import { ExternalLink, Github, Layers } from 'lucide-react';
 import Image from 'next/image';
 
-// Project data
-const projects = [
+// Interface para tipagem
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  demoUrl?: string;
+  repoUrl?: string;
+  category: 'fullstack' | 'frontend';
+  details: {
+    challenge: string;
+    solution: string;
+    features: string[];
+  };
+}
+
+// Dados dos projetos
+const projects: Project[] = [
   {
     id: 1,
     title: 'Gestor de Condomínios',
@@ -113,8 +130,8 @@ const projects = [
       'Prisma',
       'Docker',
     ],
-    demoUrl: 'https://exemplo.com', // se houver deploy
-    repoUrl: 'https://github.com/ZanellaIgor/amigo-secreto', // frontend ou monorepo
+    demoUrl: 'https://exemplo.com',
+    repoUrl: 'https://github.com/ZanellaIgor/amigo-secreto',
     category: 'fullstack',
     details: {
       challenge:
@@ -133,10 +150,17 @@ const projects = [
 ];
 
 export function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('all');
+
+  // Filtrar projetos com base na aba ativa
+  const filteredProjects = projects.filter((project) =>
+    activeTab === 'all' ? true : project.category === activeTab
+  );
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20" aria-label="Portfólio de projetos">
       <div className="container max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -157,7 +181,7 @@ export function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Tabs defaultValue="all" className="w-full mb-8">
+          <Tabs defaultValue="all" onValueChange={setActiveTab}>
             <TabsList className="grid grid-cols-3 w-[400px] mx-auto">
               <TabsTrigger value="all">Todos</TabsTrigger>
               <TabsTrigger value="fullstack">Full Stack</TabsTrigger>
@@ -165,151 +189,161 @@ export function Projects() {
             </TabsList>
           </Tabs>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-              >
-                <Card className="h-full flex flex-col overflow-hidden group">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={project.image || '/placeholder.svg'}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
-                  <CardHeader>
-                    <CardTitle>{project.title}</CardTitle>
-                    <CardDescription>{project.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary">
-                          {tag}
-                        </Badge>
-                      ))}
+          <Dialog
+            open={isOpen}
+            onOpenChange={(open) => {
+              setIsOpen(open);
+              if (!open) setSelectedProject(null); // Limpar projeto selecionado ao fechar
+            }}
+          >
+            <div className="grid md:grid-cols-2 gap-6">
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 * index }}
+                >
+                  <Card className="h-full flex flex-col overflow-hidden group">
+                    <div className="relative h-48 overflow-hidden">
+                      <Image
+                        src={project.image || '/placeholder.svg'}
+                        alt={`Imagem do projeto ${project.title}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
                     </div>
-                  </CardContent>
-                  <CardFooter className="flex justify-between">
-                    <Dialog>
+                    <CardHeader>
+                      <CardTitle>{project.title}</CardTitle>
+                      <CardDescription>{project.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex-grow">
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tags.map((tag) => (
+                          <Badge key={tag} variant="secondary">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                    <CardFooter className="flex justify-between">
                       <DialogTrigger asChild>
                         <Button
                           variant="outline"
-                          onClick={() => setSelectedProject(project)}
+                          onClick={() => {
+                            setSelectedProject(project);
+                            setIsOpen(true);
+                          }}
+                          aria-label={`Ver detalhes do projeto ${project.title}`}
                         >
                           <Layers className="mr-2 h-4 w-4" />
                           Detalhes
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-2xl">
-                        {selectedProject && (
-                          <>
-                            <DialogHeader>
-                              <DialogTitle>{selectedProject.title}</DialogTitle>
-                              <DialogDescription>
-                                {selectedProject.description}
-                              </DialogDescription>
-                            </DialogHeader>
-                            <div className="relative h-64 my-4">
-                              <Image
-                                src={
-                                  selectedProject.image || '/placeholder.svg'
-                                }
-                                alt={selectedProject.title}
-                                fill
-                                className="object-cover rounded-md"
-                              />
-                            </div>
-                            <div className="space-y-4">
-                              <div>
-                                <h4 className="font-medium mb-2">O Desafio</h4>
-                                <p className="text-sm text-muted-foreground">
-                                  {selectedProject.details.challenge}
-                                </p>
-                              </div>
-                              <div>
-                                <h4 className="font-medium mb-2">A Solução</h4>
-                                <p className="text-sm text-muted-foreground">
-                                  {selectedProject.details.solution}
-                                </p>
-                              </div>
-                              <div>
-                                <h4 className="font-medium mb-2">
-                                  Funcionalidades
-                                </h4>
-                                <ul className="text-sm text-muted-foreground space-y-1">
-                                  {selectedProject.details.features.map(
-                                    (feature, i) => (
-                                      <li key={i} className="flex items-start">
-                                        <span className="text-primary mr-2">
-                                          •
-                                        </span>
-                                        <span>{feature}</span>
-                                      </li>
-                                    )
-                                  )}
-                                </ul>
-                              </div>
-                              <div className="flex gap-4 pt-4">
-                                <Button asChild>
-                                  <a
-                                    href={selectedProject.demoUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                  >
-                                    <ExternalLink className="mr-2 h-4 w-4" />
-                                    Ver Demo
-                                  </a>
-                                </Button>
-                                <Button variant="outline" asChild>
-                                  <a
-                                    href={selectedProject.repoUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                  >
-                                    <Github className="mr-2 h-4 w-4" />
-                                    Código Fonte
-                                  </a>
-                                </Button>
-                              </div>
-                            </div>
-                          </>
+                      <div className="flex gap-2">
+                        {project.demoUrl && (
+                          <Button variant="ghost" size="icon" asChild>
+                            <a
+                              href={project.demoUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Acessar demonstração do projeto ${project.title}`}
+                            >
+                              <ExternalLink className="h-4 w-4" />
+                            </a>
+                          </Button>
                         )}
-                      </DialogContent>
-                    </Dialog>
-                    <div className="flex gap-2">
-                      <Button variant="ghost" size="icon" asChild>
+                        {project.repoUrl && (
+                          <Button variant="ghost" size="icon" asChild>
+                            <a
+                              href={project.repoUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Ver código do projeto ${project.title}`}
+                            >
+                              <Github className="h-4 w-4" />
+                            </a>
+                          </Button>
+                        )}
+                      </div>
+                    </CardFooter>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            {selectedProject && (
+              <DialogContent className="max-w-2xl">
+                <DialogHeader>
+                  <DialogTitle>{selectedProject.title}</DialogTitle>
+                  <DialogDescription>
+                    {selectedProject.description}
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="relative h-64 my-4">
+                  <Image
+                    src={selectedProject.image || '/placeholder.svg'}
+                    alt={`Imagem do projeto ${selectedProject.title}`}
+                    fill
+                    className="object-cover rounded-md"
+                  />
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-medium mb-2">O Desafio</h4>
+                    <p className="text-sm text-muted-foreground">
+                      {selectedProject.details.challenge}
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium mb-2">A Solução</h4>
+                    <p className="text-sm text-muted-foreground">
+                      {selectedProject.details.solution}
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium mb-2">Funcionalidades</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      {selectedProject.details.features.map((feature, i) => (
+                        <li key={i} className="flex items-start">
+                          <span className="text-primary mr-2">•</span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="flex gap-4 pt-4">
+                    {selectedProject.demoUrl && (
+                      <Button asChild>
                         <a
-                          href={project.demoUrl}
+                          href={selectedProject.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label="Ver demo"
                         >
-                          <ExternalLink className="h-4 w-4" />
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Ver Demo
                         </a>
                       </Button>
-                      <Button variant="ghost" size="icon" asChild>
+                    )}
+                    {selectedProject.repoUrl && (
+                      <Button variant="outline" asChild>
                         <a
-                          href={project.repoUrl}
+                          href={selectedProject.repoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label="Ver código"
                         >
-                          <Github className="h-4 w-4" />
+                          <Github className="mr-2 h-4 w-4" />
+                          Código Fonte
                         </a>
                       </Button>
-                    </div>
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+                    )}
+                  </div>
+                </div>
+              </DialogContent>
+            )}
+          </Dialog>
         </motion.div>
       </div>
     </section>
