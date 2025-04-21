@@ -109,7 +109,7 @@ export function Contact() {
                 <div className="flex gap-3">
                   <Button variant="outline" size="icon" asChild>
                     <a
-                      href="https://github.com"
+                      href="https://github.com/ZanellaIgor"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="GitHub"

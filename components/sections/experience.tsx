@@ -10,46 +10,7 @@ import {
 } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Briefcase, Calendar } from 'lucide-react';
-
-const experiences = [
-  {
-    id: 1,
-    company: 'Windel Sistemas Ltda',
-    position: 'Desenvolvedor Frontend',
-    period: 'Nov 2023 - Presente',
-    description:
-      'Atuo no desenvolvimento e manutenção de sistemas internos como ERP e CRM, utilizando Next.js, TypeScript e Material UI.',
-    responsibilities: [
-      'Desenvolvimento de interfaces modernas com Next.js e Material UI',
-      'Migração de sistema de Chakra UI para Material UI',
-      'Componentização de interfaces seguindo boas práticas de React',
-      'Otimização de performance e experiência do usuário',
-      'Ajustes pontuais e suporte em endpoints desenvolvidos com NestJS',
-    ],
-    technologies: [
-      'Next.js',
-      'TypeScript',
-      'Material UI',
-      'React',
-      'NestJS',
-      'Tailwind CSS',
-    ],
-  },
-  {
-    id: 2,
-    company: 'Windel Sistemas Ltda',
-    position: 'Suporte ao Cliente',
-    period: 'Ago 2022 - Nov 2023',
-    description:
-      'Prestei suporte técnico ao cliente, analisando problemas e auxiliando na utilização do sistema ERP da empresa.',
-    responsibilities: [
-      'Atendimento técnico ao cliente',
-      'Abertura e acompanhamento de chamados',
-      'Testes e sugestões de melhorias para o sistema',
-    ],
-    technologies: ['ERP', 'Suporte técnico', 'Documentação'],
-  },
-];
+import { experiences } from '@/data/experience';
 
 export function Experience() {
   return (
@@ -71,7 +32,6 @@ export function Experience() {
         </motion.div>
 
         <div className="relative">
-          {/* Timeline line */}
           <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border -ml-px md:ml-0 hidden md:block" />
 
           <div className="space-y-12">
@@ -89,10 +49,8 @@ export function Experience() {
                     index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                   }`}
                 >
-                  {/* Timeline dot */}
                   <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary z-10" />
 
-                  {/* Date badge - mobile only */}
                   <div className="flex items-center mb-4 md:hidden">
                     <Badge variant="outline" className="flex items-center">
                       <Calendar className="mr-1 h-3 w-3" />
