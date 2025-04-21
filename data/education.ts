@@ -19,15 +19,14 @@ export interface ICertification {
 export const educations: IEducation[] = [
   {
     id: 1,
-    institution: 'Faculdade Metropolitana',
-    degree: 'Pós-graduação em Engenharia de Software',
-    period: 'Jul 2024 - Dez 2024',
+    institution: 'FAMEESP - Faculdade Metropolitana do Estado de São Paulo',
+    degree: 'Pós-graduação Lato Sensu em Engenharia de Software',
+    period: 'Jun 2024 - Dez 2024',
     description:
-      'Especialização com foco em arquitetura de software, engenharia de requisitos, testes automatizados e práticas de desenvolvimento moderno.',
+      'Especialização com foco em ciclo de vida de software, engenharia de requisitos, projeto e teste de software, qualidade de software, gerenciamento de projetos, configuração e governança de TI.',
     highlights: [
-      'Ênfase em arquitetura de sistemas e boas práticas de engenharia',
-      'Aplicação prática com ferramentas modernas de desenvolvimento',
-      'Alinhamento com objetivos de se tornar arquiteto de software',
+      'Ênfase testes e boas práticas de engenharia',
+      'Desenvolvimento de habilidades em gestão de projetos e qualidade de software',
     ],
   },
   {

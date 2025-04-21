@@ -1,6 +1,6 @@
 # 🌐 Portfólio | Igor Zanella
 
-Este é meu portfólio pessoal desenvolvido com **Next.js** e tecnologias modernas de front-end. O projeto apresenta minha trajetória profissional, habilidades técnicas, projetos, formação acadêmica e formas de contato.
+Este é meu portfólio pessoal desenvolvido com **Next.js**. O projeto apresenta minha trajetória profissional, habilidades técnicas, projetos, formação acadêmica e formas de contato.
 
 ---
 
@@ -12,7 +12,7 @@ Este é meu portfólio pessoal desenvolvido com **Next.js** e tecnologias modern
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Next.js** — Framework React full stack
+- **Next.js** — Framework React
 - **TypeScript** — Tipagem estática para maior segurança
 - **Tailwind CSS** — Estilização rápida e responsiva
 - **Framer Motion** — Animações suaves
@@ -24,7 +24,7 @@ Este é meu portfólio pessoal desenvolvido com **Next.js** e tecnologias modern
 ## 📂 Estrutura das Seções
 
 - **Início**: Apresentação pessoal
-- **Sobre mim**: Um pouco sobre mim e CV para download
+- **Sobre mim**: Breve biografia e botão para download do CV em PDF.
 - **Habilidades Técnicas**: Stacks separadas por categoria com destaque visual
 - **Projetos**: Cards com animações, filtro por tipo e modal com detalhes
 - **Experiência**: Timeline interativa com cards detalhados
@@ -35,16 +35,22 @@ Este é meu portfólio pessoal desenvolvido com **Next.js** e tecnologias modern
 
 ## 🚀 Como Rodar o Projeto
 
-1. Clone o repositório:
+### Pré-requisitos
 
-````bash
+- Node.js v18.x ou superior
+
+### Passos
+
+Clone o repositório e localize o projeto:
+
+```bash
 git clone https://github.com/ZanellaIgor/portfolio.git
 cd portfolio
+```
 
+2. Instale as dependêcias com yarn ou npm
 
-## Getting Started
-
-First, run the development server:
+3. Rode o projeto:
 
 ```bash
 npm run dev
@@ -54,4 +60,4 @@ yarn dev
 pnpm dev
 # or
 bun dev
-````
+```

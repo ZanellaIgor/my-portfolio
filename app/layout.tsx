@@ -8,7 +8,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Portfólio Profissional | Desenvolvedor Full Stack',
+  title: 'Portfólio Profissional | Igor Zanella',
   description:
     'Portfólio profissional de desenvolvedor web full stack, destacando projetos, habilidades e experiência.',
 };
@@ -24,8 +24,9 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
+          enableSystem={false}
           disableTransitionOnChange={false}
+          themes={['light', 'dark']}
         >
           <Toaster />
           {children}

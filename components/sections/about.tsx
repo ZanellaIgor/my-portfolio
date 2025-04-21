@@ -47,23 +47,26 @@ export function About() {
           >
             <Card className="bg-muted/50">
               <CardContent className="py-4">
-                <p className="text-lg">
-                  Sou um desenvolvedor web full stack com experiência em criar
-                  aplicações web modernas e responsivas. Minha paixão está em
-                  desenvolver soluções que combinam design atraente com código
-                  limpo e eficiente.
-                </p>
-                <p className="text-lg">
-                  Tenho experiência com diversas tecnologias front-end e
-                  back-end, incluindo React, Next.js, Node.js, e bancos de dados
-                  SQL e NoSQL. Estou sempre buscando aprender novas tecnologias
-                  e aprimorar minhas habilidades.
-                </p>
-                <p className="text-lg">
-                  Meu objetivo é contribuir para projetos desafiadores que me
-                  permitam crescer profissionalmente enquanto crio valor para
-                  usuários e empresas.
-                </p>
+                <div className="space-y-4">
+                  <p className="text-lg">
+                    Minha trajetória como Desenvolvedor tem sido marcada por uma
+                    busca contínua por aprimoramento e pela dedicação em
+                    solucionar desafios complexos.
+                  </p>
+                  <p className="text-lg">
+                    Possuo experiência na concepção e desenvolvimento de
+                    aplicações web responsivas e intuitivas, utilizando um
+                    conjunto diversificado de tecnologias que abrangem o
+                    front-end (React, Next.js) e o back-end (Node.js, bancos de
+                    dados).
+                  </p>
+
+                  <p className="text-lg">
+                    Minha motivação está em transformar problemas complexos em
+                    soluções simples, eficientes e acessíveis, criando
+                    experiências que impactam positivamente os usuários.
+                  </p>
+                </div>
                 <div className="flex justify-center pt-4">
                   <Button
                     size="lg"
