@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Card,
   CardContent,
@@ -24,7 +24,6 @@ import {
   ICertification,
 } from '../../data/education';
 
-// Componente para renderizar uma formação acadêmica
 function EducationCard({ edu }: { edu: IEducation }) {
   return (
     <Card>
@@ -56,7 +55,6 @@ function EducationCard({ edu }: { edu: IEducation }) {
   );
 }
 
-// Componente para renderizar a lista de certificações por ano
 function CertificationList({
   year,
   certifications,
@@ -95,12 +93,10 @@ function CertificationList({
   );
 }
 
-// Função para extrair o ano da data
 const extractYear = (date: string): string => {
-  return date.split(' ')[1]; // Extrai o ano (ex.: "2025" de "Abr 2025")
+  return date.split(' ')[1];
 };
 
-// Função para agrupar certificações por ano
 const groupCertificationsByYear = (
   certifications: ICertification[]
 ): { [key: string]: ICertification[] } => {
@@ -114,7 +110,6 @@ const groupCertificationsByYear = (
   }, {} as { [key: string]: ICertification[] });
 };
 
-// Ordenar os anos em ordem decrescente
 const sortCertificationsByYear = (groupedCerts: {
   [key: string]: ICertification[];
 }): string[] => {
@@ -122,8 +117,14 @@ const sortCertificationsByYear = (groupedCerts: {
 };
 
 export default function Education() {
-  const groupedCertifications = groupCertificationsByYear(certifications);
-  const sortedYears = sortCertificationsByYear(groupedCertifications);
+  const groupedCertifications = useMemo(
+    () => groupCertificationsByYear(certifications),
+    [certifications]
+  );
+  const sortedYears = useMemo(
+    () => sortCertificationsByYear(groupedCertifications),
+    [groupedCertifications]
+  );
 
   return (
     <section id="education" className="py-20">
