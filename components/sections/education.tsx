@@ -119,7 +119,7 @@ const sortCertificationsByYear = (groupedCerts: {
 export default function Education() {
   const groupedCertifications = useMemo(
     () => groupCertificationsByYear(certifications),
-    [certifications]
+    []
   );
   const sortedYears = useMemo(
     () => sortCertificationsByYear(groupedCertifications),
