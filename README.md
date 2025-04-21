@@ -6,7 +6,7 @@ Este é meu portfólio pessoal desenvolvido com **Next.js**. O projeto apresenta
 
 ## 📸 Demonstração
 
-![Preview](public/demo.png) <!-- Adicione um print se desejar -->
+![Preview](public/demo.PNG)
 
 ---
 

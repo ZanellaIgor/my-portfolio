@@ -11,6 +11,15 @@ export const metadata: Metadata = {
   title: 'Portfólio Profissional | Igor Zanella',
   description:
     'Portfólio profissional de desenvolvedor web full stack, destacando projetos, habilidades e experiência.',
+  applicationName: 'Portfólio Igor Zanella',
+  keywords: [
+    'desenvolvedor web',
+    'full stack',
+    'React',
+    'Next.js',
+    'Node.js',
+    'portfólio',
+  ],
 };
 
 export default function RootLayout({
