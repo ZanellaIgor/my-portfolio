@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Github, Linkedin, Mail } from 'lucide-react';
+import { emailURL, githubURL, linkedinURL } from '@/const/contacts';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,7 +11,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div>
             <Link href="#hero" className="text-lg font-bold">
-              <span className="text-primary">Dev</span>Portfolio
+              <span className="text-primary">Dev</span>Igor
             </Link>
             <p className="text-sm text-muted-foreground mt-1">
               © {currentYear} Todos os direitos reservados
@@ -19,7 +20,7 @@ export function Footer() {
 
           <div className="flex items-center gap-4">
             <Link
-              href="https://github.com"
+              href={githubURL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -28,7 +29,7 @@ export function Footer() {
               <Github className="h-5 w-5" />
             </Link>
             <Link
-              href="www.linkedin.com/in/zanella-igor"
+              href={linkedinURL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -37,7 +38,7 @@ export function Footer() {
               <Linkedin className="h-5 w-5" />
             </Link>
             <Link
-              href="mailto:contato@exemplo.com"
+              href={emailURL}
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="Email"
             >

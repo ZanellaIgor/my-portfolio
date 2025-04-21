@@ -3,6 +3,7 @@
 import { Button } from '../ui/button';
 import { ArrowDown, Github, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { githubURL, linkedinURL } from '@/const/contacts';
 
 export function Hero() {
   const scrollToNextSection = () => {
@@ -77,7 +78,7 @@ export function Hero() {
           >
             <Button variant="ghost" size="icon" asChild>
               <a
-                href="https://github.com/ZanellaIgor"
+                href={githubURL}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -87,7 +88,7 @@ export function Hero() {
             </Button>
             <Button variant="ghost" size="icon" asChild>
               <a
-                href="https://www.linkedin.com/in/zanella-igor"
+                href={linkedinURL}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"

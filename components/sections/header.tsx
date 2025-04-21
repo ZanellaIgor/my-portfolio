@@ -69,7 +69,7 @@ export function Header() {
           href="#hero"
           className="text-xl font-bold tracking-tight hover:text-primary transition-colors"
         >
-          <span className="text-primary">Dev</span>Portfolio
+          <span className="text-primary">Dev</span>Igor
         </Link>
 
         {isMobile ? (

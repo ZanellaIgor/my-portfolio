@@ -5,6 +5,7 @@ import './globals.css';
 
 import { cn } from '../lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'Portfólio Profissional | Desenvolvedor Full Stack',
@@ -22,10 +23,11 @@ export default function RootLayout({
       <body className={cn('min-h-screen bg-background font-sans antialiased')}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange={false}
         >
+          <Toaster />
           {children}
         </ThemeProvider>
       </body>

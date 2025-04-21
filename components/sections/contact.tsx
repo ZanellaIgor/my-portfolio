@@ -12,6 +12,7 @@ import {
 import { Button } from '../ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Copy, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { emailURL, githubURL, linkedinURL } from '@/const/contacts';
 
 export function Contact() {
   const { toast } = useToast();
@@ -61,7 +62,7 @@ export function Contact() {
               <ContactInfo
                 icon={<Mail className="h-5 w-5 mr-3 text-primary" />}
                 label="Email"
-                value="igorznll@hotmail.com"
+                value={emailURL}
                 onCopy={copyToClipboard}
               />
               <ContactInfo
@@ -87,19 +88,19 @@ export function Contact() {
                 <h3 className="text-sm font-medium mb-3">Redes Sociais</h3>
                 <div className="flex gap-3">
                   <SocialIcon
-                    href="https://github.com/ZanellaIgor"
+                    href={githubURL}
                     label="GitHub"
-                    icon={<Github className="h-4 w-4 text-[#333]" />}
+                    icon={<Github className="h-4 w-4" />}
                   />
                   <SocialIcon
-                    href="https://www.linkedin.com/in/zanella-igor"
+                    href={linkedinURL}
                     label="LinkedIn"
-                    icon={<Linkedin className="h-4 w-4 text-[#0e76a8]" />}
+                    icon={<Linkedin className="h-4 w-4 " />}
                   />
                   <SocialIcon
                     href="mailto:igorznll@hotmail.com"
                     label="Email"
-                    icon={<Mail className="h-4 w-4 text-primary" />}
+                    icon={<Mail className="h-4 w-4" />}
                   />
                 </div>
               </div>
