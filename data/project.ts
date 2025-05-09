@@ -20,7 +20,7 @@ export const projects: Project[] = [
       'Zod',
       'Zustand',
     ],
-    demoUrl: 'https://exemplo.com',
+
     repoUrl: 'https://github.com/ZanellaIgor/CondominiumAdmin',
     category: 'fullstack',
     details: {
@@ -56,7 +56,7 @@ export const projects: Project[] = [
       'Zustand',
       'TypeScript',
     ],
-    demoUrl: 'https://exemplo.com',
+
     repoUrl: 'https://github.com/ZanellaIgor/dev-sushi',
     category: 'frontend',
     details: {
@@ -88,7 +88,7 @@ export const projects: Project[] = [
       'Prisma',
       'Docker',
     ],
-    demoUrl: 'https://exemplo.com',
+
     repoUrl: 'https://github.com/ZanellaIgor/amigo-secreto',
     category: 'fullstack',
     details: {

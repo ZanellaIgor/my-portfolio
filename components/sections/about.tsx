@@ -5,6 +5,12 @@ import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { Download } from 'lucide-react';
 import Image from 'next/image';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '../ui/tooltip';
 
 export function About() {
   return (
@@ -68,17 +74,29 @@ export function About() {
                   </p>
                 </div>
                 <div className="flex justify-center pt-4">
-                  <Button
-                    size="lg"
-                    className="group relative overflow-hidden"
-                    variant="default"
-                  >
-                    <span className="relative z-10 flex items-center">
-                      <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
-                      Baixar Currículo
-                    </span>
-                    <span className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-                  </Button>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <div>
+                          <Button
+                            size="lg"
+                            className="group relative overflow-hidden"
+                            variant="default"
+                            disabled
+                          >
+                            <span className="relative z-10 flex items-center">
+                              <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
+                              Baixar Currículo
+                            </span>
+                            <span className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+                          </Button>
+                        </div>
+                      </TooltipTrigger>
+                      <TooltipContent side="top">
+                        <p>Em breve</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </div>
               </CardContent>
             </Card>

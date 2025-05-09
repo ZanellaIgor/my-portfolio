@@ -92,47 +92,56 @@ function ProjectCard({
 function ProjectModal({ project }: { project: Project }) {
   return (
     <DialogContent
-      className="max-w-2xl"
+      className="w-full max-w-5xl max-h-[95vh] p-0"
       role="dialog"
       aria-labelledby="project-title"
     >
-      <DialogHeader>
-        <DialogTitle id="project-title">{project.title}</DialogTitle>
-        <DialogDescription>{project.description}</DialogDescription>
-      </DialogHeader>
-      <div className="relative h-64 my-4">
-        <Image
-          src={project.image}
-          alt={`Imagem do projeto ${project.title}`}
-          fill
-          className="object-cover rounded-md"
-        />
-      </div>
-      <div className="space-y-4">
-        <section>
-          <h4 className="font-medium mb-2">O Desafio</h4>
-          <p className="text-sm text-muted-foreground">
-            {project.details.challenge}
-          </p>
-        </section>
-        <section>
-          <h4 className="font-medium mb-2">A Solução</h4>
-          <p className="text-sm text-muted-foreground">
-            {project.details.solution}
-          </p>
-        </section>
-        <section>
-          <h4 className="font-medium mb-2">Funcionalidades</h4>
-          <ul className="text-sm text-muted-foreground space-y-1">
-            {project.details.features.map((feature, i) => (
-              <li key={i} className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-        <div className="flex gap-4 pt-4">
+      <div className="flex flex-col h-[90vh]">
+        <DialogHeader className="p-4 border-b">
+          <DialogTitle id="project-title">{project.title}</DialogTitle>
+          <DialogDescription>{project.description}</DialogDescription>
+        </DialogHeader>
+
+        {/* Conteúdo rolável */}
+        <div className="overflow-y-auto p-4 space-y-4 flex-1">
+          <div className="relative h-64">
+            <Image
+              src={project.image}
+              alt={`Imagem do projeto ${project.title}`}
+              fill
+              className="object-cover rounded-md"
+            />
+          </div>
+
+          <section>
+            <h4 className="font-medium mb-2">O Desafio</h4>
+            <p className="text-sm text-muted-foreground">
+              {project.details.challenge}
+            </p>
+          </section>
+
+          <section>
+            <h4 className="font-medium mb-2">A Solução</h4>
+            <p className="text-sm text-muted-foreground">
+              {project.details.solution}
+            </p>
+          </section>
+
+          <section>
+            <h4 className="font-medium mb-2">Funcionalidades</h4>
+            <ul className="text-sm text-muted-foreground space-y-1">
+              {project.details.features.map((feature, i) => (
+                <li key={i} className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
+
+        {/* Rodapé fixo com botões */}
+        <div className="flex gap-4 p-4 border-t">
           {project.demoUrl && (
             <Button asChild>
               <a
