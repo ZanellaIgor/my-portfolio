@@ -37,7 +37,7 @@ export function About() {
           >
             <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-primary">
               <Image
-                src="/perfil-1.jpeg"
+                src="/perfil-2.jpg"
                 alt="Foto de perfil"
                 fill
                 className="object-cover"
@@ -77,12 +77,15 @@ export function About() {
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <div>
+                        <a
+                          href="/Igor_Zanella_Curriculo.pdf"
+                          download="Igor_Zanella_Curriculo.pdf"
+                          className="no-underline"
+                        >
                           <Button
                             size="lg"
                             className="group relative overflow-hidden"
                             variant="default"
-                            disabled
                           >
                             <span className="relative z-10 flex items-center">
                               <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
@@ -90,10 +93,10 @@ export function About() {
                             </span>
                             <span className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
                           </Button>
-                        </div>
+                        </a>
                       </TooltipTrigger>
                       <TooltipContent side="top">
-                        <p>Em breve</p>
+                        <p>Clique para baixar</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
