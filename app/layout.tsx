@@ -30,6 +30,40 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={cn('min-h-screen bg-background font-sans antialiased')}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Igor Zanella',
+              jobTitle: 'Desenvolvedor Full Stack',
+             // url: 'https://igorzanella.com.br', // Substitua pela sua URL real se for diferente
+              sameAs: [
+                'https://github.com/ZanellaIgor',
+                'https://www.linkedin.com/in/zanella-igor',
+              ],
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Caxias do Sul',
+                addressRegion: 'RS',
+                addressCountry: 'BR',
+              },
+              email: 'igorznll@hotmail.com',
+              description:
+                'Desenvolvedor Web Full Stack com experiência em React, Next.js e Node.js.',
+              knowsAbout: [
+                'React',
+                'Next.js',
+                'TypeScript',
+                'Node.js',
+                'Web Development',
+                'PostgreSQL',
+                'TailwindCSS',
+              ],
+            }),
+          }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
