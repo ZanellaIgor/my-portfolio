@@ -8,7 +8,6 @@ import {
   getScrollBehavior,
   useReducedMotion,
 } from '@/hooks/use-reduced-motion';
-import { cn } from '@/lib/utils';
 
 function getHeroMotionProps(reducedMotion: boolean, delay = 0) {
   if (reducedMotion) {
@@ -40,50 +39,53 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative pt-16"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16"
     >
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(var(--primary-rgb),0.15),transparent_50%)]" />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_55%_45%_at_50%_30%,rgba(var(--primary-rgb),0.10),transparent_65%)]"
+      />
 
-      <div className="container max-w-4xl">
+      <div className="container max-w-3xl">
         <div className="flex flex-col items-center text-center">
           <motion.div {...getHeroMotionProps(reducedMotion)}>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+            <h1 className="font-heading text-hero font-bold tracking-tight text-balance">
               Olá, eu sou{' '}
               <span className="text-primary">{profile.name}.</span>
             </h1>
           </motion.div>
 
           <motion.div {...getHeroMotionProps(reducedMotion, 0.1)}>
-            <h2 className="text-xl md:text-2xl font-medium text-muted-foreground mb-2">
+            <h2 className="mt-4 font-heading text-lead font-semibold text-foreground">
               {profile.headline}
             </h2>
-            <p className="text-sm md:text-base text-muted-foreground/80 mb-6">
+            <p className="mt-2 text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">
               {profile.tagline}
             </p>
           </motion.div>
 
-          <motion.div
+          <motion.p
             {...getHeroMotionProps(reducedMotion, 0.2)}
-            className="max-w-2xl mb-8"
+            className="mt-6 max-w-2xl text-body-lg text-muted-foreground text-pretty"
           >
-            <p className="text-muted-foreground">{profile.shortBio}</p>
-          </motion.div>
+            {profile.shortBio}
+          </motion.p>
 
           <motion.div
             {...getHeroMotionProps(reducedMotion, 0.3)}
-            className="flex flex-wrap gap-4 justify-center"
+            className="mt-9 flex flex-wrap justify-center gap-3"
           >
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="text-base">
               <a href="#contact">Entre em contato</a>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button variant="outline" size="lg" asChild className="text-base">
               <a href="#projects">Ver projetos</a>
             </Button>
           </motion.div>
 
           <motion.div
             {...getHeroMotionProps(reducedMotion, 0.4)}
-            className="flex gap-4 mt-8"
+            className="mt-7 flex justify-center gap-1"
           >
             <Button variant="ghost" size="icon" asChild>
               <a
@@ -109,11 +111,14 @@ export function Hero() {
         </div>
       </div>
 
-      <div
-        className={cn(
-          'absolute bottom-10 left-1/2 -translate-x-1/2',
-          !reducedMotion && 'animate-bounce'
-        )}
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        animate={reducedMotion ? undefined : { y: [0, 8, 0] }}
+        transition={
+          reducedMotion
+            ? undefined
+            : { duration: 2.4, repeat: Infinity, ease: 'easeInOut' }
+        }
       >
         <Button
           variant="ghost"
@@ -123,7 +128,7 @@ export function Hero() {
         >
           <ArrowDown className="h-6 w-6" />
         </Button>
-      </div>
+      </motion.div>
     </section>
   );
 }
