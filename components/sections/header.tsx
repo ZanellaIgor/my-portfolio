@@ -84,7 +84,7 @@ export function Header() {
             <SheetTitle className="text-left">
               <span className="text-blue-500">Dev</span>Igor
             </SheetTitle>
-            <SheetClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            <SheetClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
               <span className="sr-only">Fechar</span>
             </SheetClose>
           </SheetHeader>
@@ -94,6 +94,9 @@ export function Header() {
                 <Link
                   href={href}
                   onClick={handleNavItemClick}
+                  aria-current={
+                    activeSection === href.slice(1) ? 'page' : undefined
+                  }
                   className={cn(
                     'px-6 py-4 transition-colors hover:bg-blue-950/30 border-b border-blue-900/10 flex items-center',
                     activeSection === href.slice(1) &&
@@ -117,6 +120,9 @@ export function Header() {
           <Link
             key={name}
             href={href}
+            aria-current={
+              activeSection === href.slice(1) ? 'page' : undefined
+            }
             className={cn(
               'px-3 py-2 rounded-md text-sm transition-colors hover:text-blue-400',
               activeSection === href.slice(1) && 'font-medium text-blue-500'
@@ -146,7 +152,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 transition-[padding,background-color,box-shadow] duration-300',
         isScrolled
           ? 'bg-background/80 backdrop-blur-md py-2 shadow-sm'
           : 'bg-transparent py-4'

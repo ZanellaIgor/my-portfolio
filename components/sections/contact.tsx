@@ -26,7 +26,7 @@ export function Contact() {
         description: 'Agora é só colar onde quiser.',
       });
     },
-    [toast]
+    [toast],
   );
 
   return (
@@ -54,10 +54,7 @@ export function Contact() {
           <Card>
             <CardHeader>
               <CardTitle>Vamos nos conectar</CardTitle>
-              <CardDescription>
-                Estou disponível por esses canais. Fique à vontade para me
-                chamar!
-              </CardDescription>
+              <CardDescription>Fique à vontade para me chamar.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <ContactInfo
@@ -135,6 +132,7 @@ function ContactInfo({
           size="sm"
           className="h-7 px-2 mt-1 active:scale-95 transition-transform"
           onClick={() => onCopy(value)}
+          aria-label={`Copiar ${label.toLowerCase()}`}
         >
           <Copy className="h-3 w-3 mr-1" />
           <span className="text-xs">Copiar</span>

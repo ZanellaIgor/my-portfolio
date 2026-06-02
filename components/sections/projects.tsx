@@ -25,6 +25,64 @@ import Image from 'next/image';
 import { Project } from '@/interfaces/project';
 import { projects } from '@/data/project';
 import { profile } from '@/data/profile';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
+import { getProjectRepoLinks } from '@/lib/project-repos';
+
+function ProjectRepoIconLinks({
+  projectTitle,
+  links,
+}: {
+  projectTitle: string;
+  links: ReturnType<typeof getProjectRepoLinks>;
+}) {
+  if (links.length === 0) return null;
+
+  return (
+    <>
+      {links.map((link) => (
+        <Button key={link.url} variant="ghost" size="icon" asChild>
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${link.label} — ${projectTitle}`}
+            title={link.label}
+          >
+            <Github className="h-4 w-4" />
+          </a>
+        </Button>
+      ))}
+    </>
+  );
+}
+
+function ProjectRepoButtonLinks({
+  projectTitle,
+  links,
+}: {
+  projectTitle: string;
+  links: ReturnType<typeof getProjectRepoLinks>;
+}) {
+  if (links.length === 0) return null;
+
+  return (
+    <>
+      {links.map((link) => (
+        <Button key={link.url} variant="outline" asChild>
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${link.label} — ${projectTitle}`}
+          >
+            <Github className="mr-2 h-4 w-4" />
+            {link.label}
+          </a>
+        </Button>
+      ))}
+    </>
+  );
+}
 
 function ProjectCard({
   project,
@@ -33,6 +91,15 @@ function ProjectCard({
   project: Project;
   onOpen: () => void;
 }) {
+  const reducedMotion = useReducedMotion();
+  const imageClassName = [
+    'object-cover transition-transform duration-300',
+    !reducedMotion && 'group-hover:scale-105',
+  ]
+    .filter(Boolean)
+    .join(' ');
+  const repoLinks = getProjectRepoLinks(project);
+
   return (
     <Card className="h-full flex flex-col overflow-hidden group">
       <div className="relative w-full h-48">
@@ -40,7 +107,7 @@ function ProjectCard({
           src={project.image}
           alt={`Imagem do projeto ${project.title}`}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          className={imageClassName}
         />
       </div>
       <CardHeader>
@@ -68,108 +135,83 @@ function ProjectCard({
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Abrir demo de ${project.title}`}
               >
                 <ExternalLink className="h-4 w-4" />
               </a>
             </Button>
           )}
-          {project.repoUrl && (
-            <Button variant="ghost" size="icon" asChild>
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="h-4 w-4" />
-              </a>
-            </Button>
-          )}
+          <ProjectRepoIconLinks
+            projectTitle={project.title}
+            links={repoLinks}
+          />
         </div>
       </CardFooter>
     </Card>
   );
 }
 
-function ProjectModal({ project }: { project: Project }) {
+function ProjectModalBody({ project }: { project: Project }) {
+  const repoLinks = getProjectRepoLinks(project);
+
   return (
-    <DialogContent
-      className="w-full max-w-5xl max-h-[95vh] p-0"
-      role="dialog"
-      aria-labelledby="project-title"
-    >
-      <div className="flex flex-col h-[90vh]">
-        <DialogHeader className="p-4 border-b">
-          <DialogTitle id="project-title">{project.title}</DialogTitle>
-          <DialogDescription>{project.description}</DialogDescription>
-        </DialogHeader>
-
-        {/* Conteúdo rolável */}
-        <div className="overflow-y-auto p-4 space-y-4 flex-1">
-          <div className="relative h-64">
-            <Image
-              src={project.image}
-              alt={`Imagem do projeto ${project.title}`}
-              fill
-              className="object-cover rounded-md"
-            />
-          </div>
-
-          <section>
-            <h4 className="font-medium mb-2">O Desafio</h4>
-            <p className="text-sm text-muted-foreground">
-              {project.details.challenge}
-            </p>
-          </section>
-
-          <section>
-            <h4 className="font-medium mb-2">A Solução</h4>
-            <p className="text-sm text-muted-foreground">
-              {project.details.solution}
-            </p>
-          </section>
-
-          <section>
-            <h4 className="font-medium mb-2">Funcionalidades</h4>
-            <ul className="text-sm text-muted-foreground space-y-1">
-              {project.details.features.map((feature, i) => (
-                <li key={i} className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
+    <>
+      <div className="overflow-y-auto p-4 space-y-4 flex-1">
+        <div className="relative h-64">
+          <Image
+            src={project.image}
+            alt={`Imagem do projeto ${project.title}`}
+            fill
+            className="object-cover rounded-md"
+          />
         </div>
 
-        {/* Rodapé fixo com botões */}
-        <div className="flex gap-4 p-4 border-t">
-          {project.demoUrl && (
-            <Button asChild>
-              <a
-                href={project.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ExternalLink className="mr-2 h-4 w-4" />
-                Ver Demo
-              </a>
-            </Button>
-          )}
-          {project.repoUrl && (
-            <Button variant="outline" asChild>
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="mr-2 h-4 w-4" />
-                Código Fonte
-              </a>
-            </Button>
-          )}
-        </div>
+        <section>
+          <h4 className="font-medium mb-2">O Desafio</h4>
+          <p className="text-sm text-muted-foreground">
+            {project.details.challenge}
+          </p>
+        </section>
+
+        <section>
+          <h4 className="font-medium mb-2">A Solução</h4>
+          <p className="text-sm text-muted-foreground">
+            {project.details.solution}
+          </p>
+        </section>
+
+        <section>
+          <h4 className="font-medium mb-2">Funcionalidades</h4>
+          <ul className="text-sm text-muted-foreground space-y-1">
+            {project.details.features.map((feature, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-primary mr-2">•</span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
-    </DialogContent>
+
+      <div className="flex flex-wrap gap-3 p-4 border-t">
+        {project.demoUrl && (
+          <Button asChild>
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ExternalLink className="mr-2 h-4 w-4" />
+              Ver Demo
+            </a>
+          </Button>
+        )}
+        <ProjectRepoButtonLinks
+          projectTitle={project.title}
+          links={repoLinks}
+        />
+      </div>
+    </>
   );
 }
 
@@ -206,13 +248,7 @@ export function Projects() {
           </TabsList>
         </Tabs>
 
-        <Dialog
-          open={isOpen}
-          onOpenChange={(open) => {
-            setIsOpen(open);
-            if (!open) setSelectedProject(null);
-          }}
-        >
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <div className="grid md:grid-cols-2 gap-6">
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -241,7 +277,24 @@ export function Projects() {
             ))}
           </div>
 
-          {selectedProject && <ProjectModal project={selectedProject} />}
+          <DialogContent className="w-full max-w-5xl max-h-[95vh] p-0">
+            <div className="flex flex-col h-[90vh]">
+              <DialogHeader className="p-4 border-b">
+                <DialogTitle>
+                  {selectedProject?.title ?? 'Detalhes do projeto'}
+                </DialogTitle>
+                {selectedProject && (
+                  <DialogDescription>
+                    {selectedProject.description}
+                  </DialogDescription>
+                )}
+              </DialogHeader>
+
+              {selectedProject && (
+                <ProjectModalBody project={selectedProject} />
+              )}
+            </div>
+          </DialogContent>
         </Dialog>
       </div>
     </section>

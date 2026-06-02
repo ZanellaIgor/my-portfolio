@@ -20,7 +20,10 @@ export const projects: Project[] = [
       'Zod',
       'Zustand',
     ],
-    repoUrl: 'https://github.com/ZanellaIgor/CondominiumAdmin',
+    repos: {
+      frontend: 'https://github.com/ZanellaIgor/CondominiumAdmin',
+      backend: 'https://github.com/ZanellaIgor/CondominiumAdminBackend',
+    },
     category: 'fullstack',
     details: {
       challenge:
@@ -88,7 +91,10 @@ export const projects: Project[] = [
       'Prisma',
       'Docker',
     ],
-    repoUrl: 'https://github.com/ZanellaIgor/amigo-secreto',
+    repos: {
+      frontend: 'https://github.com/ZanellaIgor/FrontEnd_AmigoSecreto',
+      backend: 'https://github.com/ZanellaIgor/BackEnd_AmigoSecreto',
+    },
     category: 'fullstack',
     details: {
       challenge:

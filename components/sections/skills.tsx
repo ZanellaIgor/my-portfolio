@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { badgeVariants, skillsData } from '@/data/skills';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 // Skill data
 type ISkillCategoryCard = {
@@ -36,6 +37,8 @@ function SkillCategoryCard({
 }
 
 export function Skills() {
+  const reducedMotion = useReducedMotion();
+
   return (
     <section
       id="skills"
@@ -66,8 +69,10 @@ export function Skills() {
             {Object.entries(skillsData).map(([category, skills]) => (
               <motion.div
                 key={category}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                {...(!reducedMotion && {
+                  whileHover: { scale: 1.02 },
+                  whileTap: { scale: 0.98 },
+                })}
               >
                 <SkillCategoryCard
                   title={category}

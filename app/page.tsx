@@ -12,7 +12,7 @@ import Education from '@/components/sections/education';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       <Header />
       <Hero />
       <About />

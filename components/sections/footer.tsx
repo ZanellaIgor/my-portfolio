@@ -26,7 +26,7 @@ export function Footer() {
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="GitHub"
             >
-              <Github className="h-5 w-5" />
+              <Github className="h-5 w-5" aria-hidden="true" />
             </Link>
             <Link
               href={linkedinURL}
@@ -35,14 +35,14 @@ export function Footer() {
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-5 w-5" />
+              <Linkedin className="h-5 w-5" aria-hidden="true" />
             </Link>
             <Link
               href={mailtoURL}
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="Email"
             >
-              <Mail className="h-5 w-5" />
+              <Mail className="h-5 w-5" aria-hidden="true" />
             </Link>
           </div>
         </div>

@@ -4,12 +4,36 @@ import { Button } from '../ui/button';
 import { ArrowDown, Github, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { profile } from '@/data/profile';
+import {
+  getScrollBehavior,
+  useReducedMotion,
+} from '@/hooks/use-reduced-motion';
+import { cn } from '@/lib/utils';
+
+function getHeroMotionProps(reducedMotion: boolean, delay = 0) {
+  if (reducedMotion) {
+    return {
+      initial: { opacity: 1, y: 0 },
+      animate: { opacity: 1, y: 0 },
+      transition: { duration: 0 },
+    };
+  }
+  return {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.5, ...(delay > 0 ? { delay } : {}) },
+  };
+}
 
 export function Hero() {
+  const reducedMotion = useReducedMotion();
+
   const scrollToNextSection = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+      aboutSection.scrollIntoView({
+        behavior: getScrollBehavior(reducedMotion),
+      });
     }
   };
 
@@ -22,22 +46,14 @@ export function Hero() {
 
       <div className="container max-w-4xl">
         <div className="flex flex-col items-center text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <motion.div {...getHeroMotionProps(reducedMotion)}>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
               Olá, eu sou{' '}
               <span className="text-primary">{profile.name}.</span>
             </h1>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
+          <motion.div {...getHeroMotionProps(reducedMotion, 0.1)}>
             <h2 className="text-xl md:text-2xl font-medium text-muted-foreground mb-2">
               {profile.headline}
             </h2>
@@ -47,18 +63,14 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            {...getHeroMotionProps(reducedMotion, 0.2)}
             className="max-w-2xl mb-8"
           >
             <p className="text-muted-foreground">{profile.shortBio}</p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            {...getHeroMotionProps(reducedMotion, 0.3)}
             className="flex flex-wrap gap-4 justify-center"
           >
             <Button asChild size="lg">
@@ -70,9 +82,7 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            {...getHeroMotionProps(reducedMotion, 0.4)}
             className="flex gap-4 mt-8"
           >
             <Button variant="ghost" size="icon" asChild>
@@ -99,7 +109,12 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <div
+        className={cn(
+          'absolute bottom-10 left-1/2 -translate-x-1/2',
+          !reducedMotion && 'animate-bounce'
+        )}
+      >
         <Button
           variant="ghost"
           size="icon"

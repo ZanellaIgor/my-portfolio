@@ -65,23 +65,24 @@ export function About() {
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <a
-                          href={profile.resumePath}
-                          download={profile.resumeFileName}
-                          className="no-underline"
+                        <Button
+                          asChild
+                          size="lg"
+                          className="group relative overflow-hidden"
+                          variant="default"
                         >
-                          <Button
-                            size="lg"
-                            className="group relative overflow-hidden"
-                            variant="default"
+                          <a
+                            href={profile.resumePath}
+                            download={profile.resumeFileName}
+                            className="no-underline"
                           >
                             <span className="relative z-10 flex items-center">
                               <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
                               Baixar Currículo
                             </span>
                             <span className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-                          </Button>
-                        </a>
+                          </a>
+                        </Button>
                       </TooltipTrigger>
                       <TooltipContent side="top">
                         <p>Clique para baixar</p>
