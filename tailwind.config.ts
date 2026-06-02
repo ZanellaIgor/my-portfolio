@@ -19,6 +19,28 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        hero: [
+          'clamp(2.25rem, 4vw + 1rem, 3.25rem)',
+          { lineHeight: '1.1', letterSpacing: '-0.025em' },
+        ],
+        lead: [
+          'clamp(1.125rem, 1vw + 0.9rem, 1.375rem)',
+          { lineHeight: '1.45', letterSpacing: '-0.01em' },
+        ],
+        'body-lg': [
+          'clamp(1rem, 0.2vw + 0.95rem, 1.0625rem)',
+          { lineHeight: '1.7' },
+        ],
+        'section-title': [
+          'clamp(1.625rem, 2vw + 1rem, 2.125rem)',
+          { lineHeight: '1.2', letterSpacing: '-0.02em' },
+        ],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -44,6 +66,10 @@ const config = {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
+        },
+        highlight: {
+          DEFAULT: 'hsl(var(--highlight))',
+          foreground: 'hsl(var(--highlight-foreground))',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
