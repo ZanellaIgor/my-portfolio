@@ -6,20 +6,13 @@ import './globals.css';
 import { cn } from '../lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import { profile } from '@/data/profile';
 
 export const metadata: Metadata = {
-  title: 'Portfólio Profissional | Igor Zanella',
-  description:
-    'Portfólio profissional de desenvolvedor web full stack, destacando projetos, habilidades e experiência.',
-  applicationName: 'Portfólio Igor Zanella',
-  keywords: [
-    'desenvolvedor web',
-    'full stack',
-    'React',
-    'Next.js',
-    'Node.js',
-    'portfólio',
-  ],
+  title: profile.metaTitle,
+  description: profile.metaDescription,
+  applicationName: profile.applicationName,
+  keywords: [...profile.seoKeywords],
 };
 
 export default function RootLayout({
@@ -36,31 +29,19 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Person',
-              name: 'Igor Zanella',
-              jobTitle: 'Desenvolvedor Full Stack',
-             // url: 'https://igorzanella.com.br', // Substitua pela sua URL real se for diferente
-              sameAs: [
-                'https://github.com/ZanellaIgor',
-                'https://www.linkedin.com/in/zanella-igor',
-              ],
+              name: profile.name,
+              jobTitle: profile.jobTitleSchema,
+              url: profile.urls.site,
+              sameAs: [profile.urls.github, profile.urls.linkedin],
               address: {
                 '@type': 'PostalAddress',
-                addressLocality: 'Caxias do Sul',
-                addressRegion: 'RS',
-                addressCountry: 'BR',
+                addressLocality: profile.location.city,
+                addressRegion: profile.location.state,
+                addressCountry: profile.location.country,
               },
-              email: 'igorznll@hotmail.com',
-              description:
-                'Desenvolvedor Web Full Stack com experiência em React, Next.js e Node.js.',
-              knowsAbout: [
-                'React',
-                'Next.js',
-                'TypeScript',
-                'Node.js',
-                'Web Development',
-                'PostgreSQL',
-                'TailwindCSS',
-              ],
+              email: profile.email,
+              description: profile.schemaDescription,
+              knowsAbout: [...profile.knowsAbout],
             }),
           }}
         />

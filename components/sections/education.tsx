@@ -75,9 +75,11 @@ function CertificationList({
                 <Calendar className="mr-1 h-3 w-3" aria-hidden="true" />
                 <span>{cert.date}</span>
               </div>
-              <p className="text-xs text-muted-foreground my-1">
-                ID: {cert.credentialId || 'N/A'}
-              </p>
+              {cert.credentialId && (
+                <p className="text-xs text-muted-foreground my-1">
+                  ID: {cert.credentialId}
+                </p>
+              )}
               <div className="flex flex-wrap gap-2">
                 {cert.skills.map((tech) => (
                   <Badge key={tech} variant="secondary">

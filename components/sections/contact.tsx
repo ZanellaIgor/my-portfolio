@@ -12,7 +12,8 @@ import {
 import { Button } from '../ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Copy, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
-import { emailURL, githubURL, linkedinURL } from '@/const/contacts';
+import { mailtoURL, githubURL, linkedinURL } from '@/const/contacts';
+import { profile } from '@/data/profile';
 
 export function Contact() {
   const { toast } = useToast();
@@ -62,13 +63,13 @@ export function Contact() {
               <ContactInfo
                 icon={<Mail className="h-5 w-5 mr-3 text-primary" />}
                 label="Email"
-                value={emailURL}
+                value={profile.email}
                 onCopy={copyToClipboard}
               />
               <ContactInfo
                 icon={<Phone className="h-5 w-5 mr-3 text-primary" />}
                 label="Telefone"
-                value="+55 (54) 98144-2437"
+                value={profile.phone}
                 onCopy={copyToClipboard}
               />
               <div className="flex items-start">
@@ -76,10 +77,10 @@ export function Contact() {
                 <div>
                   <h3 className="text-sm font-medium">Localização</h3>
                   <p className="text-sm text-muted-foreground">
-                    Caxias do Sul, RS - Brasil
+                    {profile.location.label}
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    Disponível para trabalho remoto
+                    {profile.location.remoteNote}
                   </p>
                 </div>
               </div>
@@ -98,7 +99,7 @@ export function Contact() {
                     icon={<Linkedin className="h-4 w-4 " />}
                   />
                   <SocialIcon
-                    href="mailto:igorznll@hotmail.com"
+                    href={mailtoURL}
                     label="Email"
                     icon={<Mail className="h-4 w-4" />}
                   />
@@ -156,8 +157,8 @@ function SocialIcon({
     <Button variant="outline" size="icon" className="hover:scale-105" asChild>
       <a
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={href.startsWith('mailto:') ? undefined : '_blank'}
+        rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
         aria-label={label}
       >
         {icon}

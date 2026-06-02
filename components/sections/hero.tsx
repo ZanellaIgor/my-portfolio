@@ -3,7 +3,7 @@
 import { Button } from '../ui/button';
 import { ArrowDown, Github, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { githubURL, linkedinURL } from '@/const/contacts';
+import { profile } from '@/data/profile';
 
 export function Hero() {
   const scrollToNextSection = () => {
@@ -28,7 +28,8 @@ export function Hero() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-              Olá, eu sou <span className="text-primary">Igor Zanella.</span>
+              Olá, eu sou{' '}
+              <span className="text-primary">{profile.name}.</span>
             </h1>
           </motion.div>
 
@@ -37,9 +38,12 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h2 className="text-xl md:text-2xl font-medium text-muted-foreground mb-6">
-              Desenvolvedor Web Full Stack
+            <h2 className="text-xl md:text-2xl font-medium text-muted-foreground mb-2">
+              {profile.headline}
             </h2>
+            <p className="text-sm md:text-base text-muted-foreground/80 mb-6">
+              {profile.tagline}
+            </p>
           </motion.div>
 
           <motion.div
@@ -48,12 +52,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-2xl mb-8"
           >
-            <p className="text-muted-foreground">
-              Desenvolvo soluções digitais inovadoras, com foco em performance,
-              experiência do usuário e código limpo. Especializado em
-              React/Next.js, Node.js e arquiteturas modernas para aplicações web
-              escaláveis.
-            </p>
+            <p className="text-muted-foreground">{profile.shortBio}</p>
           </motion.div>
 
           <motion.div
@@ -78,7 +77,7 @@ export function Hero() {
           >
             <Button variant="ghost" size="icon" asChild>
               <a
-                href={githubURL}
+                href={profile.urls.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -88,7 +87,7 @@ export function Hero() {
             </Button>
             <Button variant="ghost" size="icon" asChild>
               <a
-                href={linkedinURL}
+                href={profile.urls.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"

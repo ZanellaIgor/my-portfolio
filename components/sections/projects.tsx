@@ -24,6 +24,7 @@ import { ExternalLink, Github, Layers } from 'lucide-react';
 import Image from 'next/image';
 import { Project } from '@/interfaces/project';
 import { projects } from '@/data/project';
+import { profile } from '@/data/profile';
 
 function ProjectCard({
   project,
@@ -192,8 +193,8 @@ export function Projects() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-bold tracking-tight mb-2">Projetos</h2>
-          <p className="text-muted-foreground">
-            Conheça alguns dos meus trabalhos mais recentes
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            {profile.projectsSectionDescription}
           </p>
         </motion.div>
 

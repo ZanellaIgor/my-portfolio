@@ -11,6 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '../ui/tooltip';
+import { profile } from '@/data/profile';
 
 export function About() {
   return (
@@ -38,7 +39,7 @@ export function About() {
             <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-primary">
               <Image
                 src="/perfil-2.jpg"
-                alt="Foto de perfil"
+                alt={`Foto de perfil de ${profile.name}`}
                 fill
                 className="object-cover"
                 priority
@@ -54,32 +55,19 @@ export function About() {
             <Card className="bg-muted/50">
               <CardContent className="py-4">
                 <div className="space-y-4">
-                  <p className="text-lg">
-                    Minha trajetória como Desenvolvedor tem sido marcada por uma
-                    busca contínua por aprimoramento e pela dedicação em
-                    solucionar desafios complexos.
-                  </p>
-                  <p className="text-lg">
-                    Possuo experiência na concepção e desenvolvimento de
-                    aplicações web responsivas e intuitivas, utilizando um
-                    conjunto diversificado de tecnologias que abrangem o
-                    front-end (React, Next.js) e o back-end (Node.js, bancos de
-                    dados).
-                  </p>
-
-                  <p className="text-lg">
-                    Minha motivação está em transformar problemas complexos em
-                    soluções simples, eficientes e acessíveis, criando
-                    experiências que impactam positivamente os usuários.
-                  </p>
+                  {profile.longBio.map((paragraph, index) => (
+                    <p key={index} className="text-lg">
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
                 <div className="flex justify-center pt-4">
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <a
-                          href="/Igor_Zanella_Curriculo.pdf"
-                          download="Igor_Zanella_Curriculo.pdf"
+                          href={profile.resumePath}
+                          download={profile.resumeFileName}
                           className="no-underline"
                         >
                           <Button

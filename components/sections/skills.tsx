@@ -9,7 +9,7 @@ import { badgeVariants, skillsData } from '@/data/skills';
 type ISkillCategoryCard = {
   title: string;
   skills: string[];
-  badgeVariant: 'default' | 'secondary' | 'destructive';
+  badgeVariant: 'default' | 'secondary' | 'destructive' | 'outline';
 };
 
 function SkillCategoryCard({
