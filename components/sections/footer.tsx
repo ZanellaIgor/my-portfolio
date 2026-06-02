@@ -6,11 +6,14 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-muted py-8 mt-16">
+    <footer className="border-t border-border bg-muted py-8 mt-16">
       <div className="container">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div>
-            <Link href="#hero" className="text-lg font-bold">
+            <Link
+              href="#hero"
+              className="font-heading text-lg font-bold tracking-tight"
+            >
               <span className="text-primary">Dev</span>Igor
             </Link>
             <p className="text-sm text-muted-foreground mt-1">

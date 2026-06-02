@@ -78,13 +78,13 @@ export function Header() {
       <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
         <SheetContent
           side="right"
-          className="w-[280px] border-l border-blue-900/20 bg-background/95 backdrop-blur-md p-0"
+          className="w-[280px] border-l border-border bg-background p-0"
         >
-          <SheetHeader className="p-4 border-b border-blue-900/20">
-            <SheetTitle className="text-left">
-              <span className="text-blue-500">Dev</span>Igor
+          <SheetHeader className="p-4 border-b border-border">
+            <SheetTitle className="text-left font-heading">
+              <span className="text-primary">Dev</span>Igor
             </SheetTitle>
-            <SheetClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
+            <SheetClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
               <span className="sr-only">Fechar</span>
             </SheetClose>
           </SheetHeader>
@@ -98,9 +98,9 @@ export function Header() {
                     activeSection === href.slice(1) ? 'page' : undefined
                   }
                   className={cn(
-                    'px-6 py-4 transition-colors hover:bg-blue-950/30 border-b border-blue-900/10 flex items-center',
+                    'px-6 py-4 transition-colors hover:bg-accent border-b border-border flex items-center',
                     activeSection === href.slice(1) &&
-                      'bg-blue-950/40 font-medium text-blue-400'
+                      'bg-accent font-medium text-primary'
                   )}
                 >
                   {name}
@@ -124,8 +124,9 @@ export function Header() {
               activeSection === href.slice(1) ? 'page' : undefined
             }
             className={cn(
-              'px-3 py-2 rounded-md text-sm transition-colors hover:text-blue-400',
-              activeSection === href.slice(1) && 'font-medium text-blue-500'
+              'px-3 py-2 rounded-md text-sm transition-colors hover:bg-accent hover:text-primary',
+              activeSection === href.slice(1) &&
+                'bg-accent font-medium text-primary'
             )}
           >
             {name}
@@ -140,8 +141,8 @@ export function Header() {
     return (
       <header className="fixed top-0 left-0 right-0 z-50 py-4">
         <div className="container flex items-center justify-between">
-          <div className="text-xl font-bold tracking-tight">
-            <span className="text-blue-500">Dev</span>Igor
+          <div className="font-heading text-xl font-bold tracking-tight">
+            <span className="text-primary">Dev</span>Igor
           </div>
           <div className="w-10 h-10"></div>
         </div>
@@ -152,18 +153,18 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-[padding,background-color,box-shadow] duration-300',
+        'fixed top-0 left-0 right-0 z-50 py-4 transition-[background-color,border-color,box-shadow] duration-300',
         isScrolled
-          ? 'bg-background/80 backdrop-blur-md py-2 shadow-sm'
-          : 'bg-transparent py-4'
+          ? 'border-b border-border/60 bg-background/95 shadow-sm'
+          : 'border-b border-transparent bg-transparent'
       )}
     >
       <div className="container flex items-center justify-between">
         <Link
           href="#hero"
-          className="text-xl font-bold tracking-tight hover:text-blue-400 transition-colors"
+          className="font-heading text-xl font-bold tracking-tight transition-colors hover:text-primary"
         >
-          <span className="text-blue-500">Dev</span>Igor
+          <span className="text-primary">Dev</span>Igor
         </Link>
         <div className="flex items-center gap-2">
           {isMobile ? renderMobileNav() : renderDesktopNav()}
