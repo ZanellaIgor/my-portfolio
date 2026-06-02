@@ -2,54 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Índigo confiante (primary) sobre neutros frios.
+ * Accent monocromático no mesmo índigo — coeso, profissional, tom de engenharia.
+ */
 @layer base {
   :root {
     color-scheme: light;
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-rgb: 24, 119, 242;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+    --background: 222 32% 96%;
+    --foreground: 224 32% 11%;
+    --card: 228 45% 99%;
+    --card-foreground: 224 32% 11%;
+    --popover: 228 45% 99%;
+    --popover-foreground: 224 32% 11%;
+    --primary: 227 64% 52%;
+    --primary-rgb: 54, 88, 211;
+    --primary-foreground: 228 45% 99%;
+    --secondary: 224 26% 86%;
+    --secondary-foreground: 224 30% 22%;
+    --muted: 224 28% 90%;
+    --muted-foreground: 224 16% 38%;
+    --accent: 226 60% 90%;
+    --accent-foreground: 227 60% 32%;
+    --highlight: 227 64% 52%;
+    --highlight-rgb: 54, 88, 211;
+    --highlight-foreground: 228 45% 99%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 228 45% 99%;
+    --border: 224 24% 85%;
+    --input: 224 24% 85%;
+    --ring: 227 64% 52%;
+    --radius: 0.625rem;
   }
 
   .dark {
     color-scheme: dark;
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-rgb: 56, 139, 253;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --background: 224 30% 7%;
+    --foreground: 220 18% 94%;
+    --card: 224 24% 10%;
+    --card-foreground: 220 18% 94%;
+    --popover: 224 24% 10%;
+    --popover-foreground: 220 18% 94%;
+    --primary: 224 72% 56%;
+    --primary-rgb: 62, 105, 224;
+    --primary-foreground: 220 30% 98%;
+    --secondary: 224 18% 16%;
+    --secondary-foreground: 220 18% 94%;
+    --muted: 224 16% 15%;
+    --muted-foreground: 220 14% 66%;
+    --accent: 224 16% 18%;
+    --accent-foreground: 220 18% 94%;
+    --highlight: 224 80% 66%;
+    --highlight-rgb: 99, 136, 238;
+    --highlight-foreground: 224 40% 9%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 220 18% 94%;
+    --border: 224 14% 18%;
+    --input: 224 14% 18%;
+    --ring: 224 72% 56%;
   }
 }
 
@@ -58,8 +68,16 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: 'rlig' 1, 'calt' 1;
+    line-height: 1.6;
+  }
+  h2 {
+    @apply font-heading text-balance;
+    line-height: 1.2;
+  }
+  .dark body {
+    line-height: 1.65;
   }
   html {
     scroll-behavior: smooth;
@@ -73,5 +91,31 @@
 
   [id] {
     scroll-margin-top: 5rem;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply relative inline-block font-heading text-section-title text-balance font-bold tracking-tight;
+  }
+
+  .section-heading::after {
+    content: '';
+    @apply mx-auto mt-3 block h-1 w-12 rounded-full bg-primary;
+  }
+
+  /* Card elevado e interativo — feedback de hover padronizado */
+  .card-interactive {
+    @apply transition-[box-shadow,border-color,transform] duration-300 hover:border-primary/40 hover:shadow-lg;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .card-interactive {
+      @apply hover:-translate-y-1;
+    }
+  }
+
+  .section-intro {
+    @apply font-sans text-body-lg text-muted-foreground text-pretty max-w-2xl;
   }
 }
