@@ -101,7 +101,7 @@ function ProjectCard({
   const repoLinks = getProjectRepoLinks(project);
 
   return (
-    <Card className="h-full flex flex-col overflow-hidden group">
+    <Card className="card-interactive h-full flex flex-col overflow-hidden group">
       <div className="relative w-full h-48">
         <Image
           src={project.image}
@@ -111,7 +111,7 @@ function ProjectCard({
         />
       </div>
       <CardHeader>
-        <CardTitle>{project.title}</CardTitle>
+        <CardTitle className="font-heading text-lg">{project.title}</CardTitle>
         <CardDescription>{project.description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow">
@@ -185,7 +185,7 @@ function ProjectModalBody({ project }: { project: Project }) {
           <ul className="text-sm text-muted-foreground space-y-1">
             {project.details.features.map((feature, i) => (
               <li key={i} className="flex items-start">
-                <span className="text-primary mr-2">•</span>
+                <span className="text-highlight mr-2">•</span>
                 <span>{feature}</span>
               </li>
             ))}
@@ -234,8 +234,8 @@ export function Projects() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tight mb-2">Projetos</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="section-heading mb-2">Projetos</h2>
+          <p className="section-intro mx-auto">
             {profile.projectsSectionDescription}
           </p>
         </motion.div>

@@ -44,7 +44,7 @@ function EducationCard({ edu }: { edu: IEducation }) {
           <ul className="text-sm text-muted-foreground space-y-1">
             {edu.highlights.map((highlight, i) => (
               <li key={i} className="flex items-start">
-                <span className="text-primary mr-2">•</span>
+                <span className="text-highlight mr-2">•</span>
                 <span>{highlight}</span>
               </li>
             ))}
@@ -140,11 +140,11 @@ export default function Education() {
         >
           <h2
             id="education-heading"
-            className="text-3xl font-bold tracking-tight mb-2"
+            className="section-heading mb-2"
           >
             Formação Acadêmica
           </h2>
-          <p className="text-muted-foreground">
+          <p className="section-intro mx-auto">
             Minha educação formal e certificações profissionais
           </p>
         </motion.div>
@@ -156,9 +156,9 @@ export default function Education() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-xl font-medium mb-6 flex items-center">
+            <h3 className="font-heading text-xl font-semibold mb-6 flex items-center">
               <GraduationCap
-                className="mr-2 h-5 w-5 text-primary"
+                className="mr-2 h-5 w-5 text-highlight"
                 aria-hidden="true"
               />
               Educação Formal
@@ -182,8 +182,8 @@ export default function Education() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <h3 className="text-xl font-medium mb-6 flex items-center">
-              <Award className="mr-2 h-5 w-5 text-primary" aria-hidden="true" />
+            <h3 className="font-heading text-xl font-semibold mb-6 flex items-center">
+              <Award className="mr-2 h-5 w-5 text-highlight" aria-hidden="true" />
               Cursos
             </h3>
             <Card>

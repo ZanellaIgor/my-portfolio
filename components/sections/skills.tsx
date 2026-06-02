@@ -21,7 +21,9 @@ function SkillCategoryCard({
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-xl">{title}</CardTitle>
+        <CardTitle className="font-heading text-xl font-semibold">
+          {title}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex flex-wrap gap-2">
@@ -42,7 +44,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="min-h-screen py-24 bg-muted/50 flex items-center justify-center"
+      className="min-h-screen py-24 bg-muted/70 flex items-center justify-center"
     >
       <div className="container max-w-6xl">
         <motion.div
@@ -52,10 +54,8 @@ export function Skills() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tight mb-2">
-            Habilidades Técnicas
-          </h2>
-          <p className="text-muted-foreground">
+          <h2 className="section-heading mb-2">Habilidades Técnicas</h2>
+          <p className="section-intro mx-auto">
             Stack de tecnologias com as quais trabalho e continuo evoluindo
           </p>
         </motion.div>

@@ -30,7 +30,7 @@ export function Contact() {
   );
 
   return (
-    <section id="contact" className="py-20 bg-muted/50">
+    <section id="contact" className="py-20 bg-muted/70">
       <div className="container max-w-2xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,10 +39,8 @@ export function Contact() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tight mb-2">Contato</h2>
-          <p className="text-muted-foreground">
-            Você pode me encontrar por aqui 👇
-          </p>
+          <h2 className="section-heading mb-2">Contato</h2>
+          <p className="section-intro mx-auto">Escolha um canal abaixo.</p>
         </motion.div>
 
         <motion.div
@@ -53,30 +51,32 @@ export function Contact() {
         >
           <Card>
             <CardHeader>
-              <CardTitle>Vamos nos conectar</CardTitle>
+              <CardTitle className="font-heading text-xl">
+                Vamos nos conectar
+              </CardTitle>
               <CardDescription>Fique à vontade para me chamar.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <ContactInfo
-                icon={<Mail className="h-5 w-5 mr-3 text-primary" />}
+                icon={<Mail className="h-5 w-5 mr-3 text-highlight" />}
                 label="Email"
                 value={profile.email}
                 onCopy={copyToClipboard}
               />
               <ContactInfo
-                icon={<Phone className="h-5 w-5 mr-3 text-primary" />}
+                icon={<Phone className="h-5 w-5 mr-3 text-highlight" />}
                 label="Telefone"
                 value={profile.phone}
                 onCopy={copyToClipboard}
               />
               <div className="flex items-start">
-                <MapPin className="h-5 w-5 mr-3 text-primary" />
+                <MapPin className="h-5 w-5 mr-3 text-highlight" />
                 <div>
-                  <h3 className="text-sm font-medium">Localização</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="text-base font-medium">Localização</h3>
+                  <p className="text-body-lg text-muted-foreground">
                     {profile.location.label}
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-sm text-muted-foreground">
                     {profile.location.remoteNote}
                   </p>
                 </div>
@@ -125,8 +125,8 @@ function ContactInfo({
     <div className="flex items-start">
       {icon}
       <div>
-        <h3 className="text-sm font-medium">{label}</h3>
-        <p className="text-sm text-muted-foreground">{value}</p>
+        <h3 className="text-base font-medium">{label}</h3>
+        <p className="text-body-lg text-muted-foreground">{value}</p>
         <Button
           variant="ghost"
           size="sm"
