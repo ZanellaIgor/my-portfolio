@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 import { cn } from '../lib/utils';
+import { fontSans } from '@/lib/fonts';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { profile } from '@/data/profile';
@@ -17,8 +18,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#09090b' },
+    { media: '(prefers-color-scheme: light)', color: '#eef1f8' },
+    { media: '(prefers-color-scheme: dark)', color: '#0d1018' },
   ],
 };
 
@@ -28,8 +29,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
-      <body className={cn('min-h-screen bg-background font-sans antialiased')}>
+    <html
+      lang="pt-BR"
+      suppressHydrationWarning
+      className={cn(fontSans.variable)}
+    >
+      <body className={cn(fontSans.className, 'min-h-screen bg-background')}>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
