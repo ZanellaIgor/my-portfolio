@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { Download } from 'lucide-react';
 import Image from 'next/image';
@@ -26,7 +25,7 @@ export function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h2 className="text-3xl font-bold tracking-tight mb-4">Sobre Mim</h2>
+          <h2 className="section-heading mb-4">Sobre Mim</h2>
         </motion.div>
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <motion.div
@@ -52,46 +51,45 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <Card className="bg-muted/50">
-              <CardContent className="py-4">
-                <div className="space-y-4">
-                  {profile.longBio.map((paragraph, index) => (
-                    <p key={index} className="text-lg">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-                <div className="flex justify-center pt-4">
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          asChild
-                          size="lg"
-                          className="group relative overflow-hidden"
-                          variant="default"
-                        >
-                          <a
-                            href={profile.resumePath}
-                            download={profile.resumeFileName}
-                            className="no-underline"
-                          >
-                            <span className="relative z-10 flex items-center">
-                              <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
-                              Baixar Currículo
-                            </span>
-                            <span className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-                          </a>
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent side="top">
-                        <p>Clique para baixar</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </div>
-              </CardContent>
-            </Card>
+            <div className="space-y-5 border-l-2 border-highlight/50 pl-6">
+              {profile.longBio.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="text-body-lg leading-relaxed text-foreground/90"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            <div className="pt-8 pl-6">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      asChild
+                      size="lg"
+                      className="group relative overflow-hidden"
+                      variant="default"
+                    >
+                      <a
+                        href={profile.resumePath}
+                        download={profile.resumeFileName}
+                        className="no-underline"
+                      >
+                        <span className="relative z-10 flex items-center">
+                          <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
+                          Baixar Currículo
+                        </span>
+                        <span className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+                      </a>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="top">
+                    <p>Clique para baixar</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
           </motion.div>
         </div>
       </div>
