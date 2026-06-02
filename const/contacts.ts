@@ -1,3 +1,6 @@
-export const emailURL = 'igorznll@hotmail.com';
-export const githubURL = 'https://github.com/ZanellaIgor';
-export const linkedinURL = 'https://www.linkedin.com/in/zanella-igor';
+import { profile } from '@/data/profile';
+
+export const emailURL = profile.email;
+export const githubURL = profile.urls.github;
+export const linkedinURL = profile.urls.linkedin;
+export const mailtoURL = `mailto:${profile.email}`;
