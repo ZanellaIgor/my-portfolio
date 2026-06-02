@@ -5,12 +5,12 @@ export const projects: Project[] = [
     id: 1,
     title: 'Gestor de Condomínios',
     description:
-      'Sistema completo para administração de condomínios, com funcionalidades como avisos, manutenções, reservas, enquetes e painel administrativo.',
+      'Aplicação fullstack para administração de condomínios, com painel administrativo, controle de usuários, avisos, manutenções, reservas e enquetes.',
     image: '/condominium-admin.png',
     tags: [
       'React.js',
       'Material UI',
-      'Nest.js',
+      'NestJS',
       'Prisma',
       'PostgreSQL',
       'Docker',
@@ -20,23 +20,23 @@ export const projects: Project[] = [
       'Zod',
       'Zustand',
     ],
-
     repoUrl: 'https://github.com/ZanellaIgor/CondominiumAdmin',
     category: 'fullstack',
     details: {
       challenge:
-        'Criar uma solução escalável que facilitasse a comunicação e a gestão de múltiplos condomínios, com controle de acesso baseado em papéis (roles) e boa performance.',
+        'Criar uma solução administrativa com múltiplos módulos, controle de acesso por papéis e uma estrutura capaz de organizar regras de negócio, dados e fluxos operacionais de forma escalável.',
       solution:
-        'Divisão da aplicação em front-end e back-end com arquitetura modular. Backend em NestJS com autenticação via JWT, documentação Swagger e banco relacional com Prisma/PostgreSQL. Front-end em React/Next com gerenciamento de estado via Zustand e requisições assíncronas com React Query.',
+        'A aplicação foi estruturada com separação entre front-end e back-end. O back-end utiliza NestJS, Prisma, PostgreSQL, autenticação JWT e documentação via Swagger. O front-end utiliza React, Material UI, React Query, Zustand, React Hook Form e Zod para criar uma experiência consistente, validada e responsiva.',
       features: [
-        'Painel administrativo com controle de usuários, apartamentos e espaços de reserva',
-        'CRUD completo de avisos, manutenções, reservas e enquetes',
-        'Controle de acesso baseado em roles (User, Admin, Master)',
+        'Painel administrativo para gestão de usuários, apartamentos e áreas comuns',
+        'CRUD de avisos, manutenções, reservas e enquetes',
+        'Controle de acesso baseado em papéis',
         'Autenticação JWT com validação de dados',
         'API documentada com Swagger',
-        'Frontend com formulários validados (React Hook Form + Zod)',
-        'Experiência de uso fluída com React Query e Zustand',
-        'Design responsivo utilizando Material UI',
+        'Formulários com React Hook Form e Zod',
+        'Gerenciamento de estado com Zustand',
+        'Requisições assíncronas com React Query',
+        'Interface responsiva com Material UI',
       ],
     },
   },
@@ -44,7 +44,7 @@ export const projects: Project[] = [
     id: 2,
     title: 'Dev Sushi',
     description:
-      'Aplicação web de uma loja fictícia de sushi, com foco em UX moderna, formulário multi-etapas e integração com WhatsApp para envio de pedidos.',
+      'Aplicação web para uma loja fictícia de sushi, com interface responsiva, carrinho de compras, formulário multi-etapas e envio de pedidos via WhatsApp.',
     image: '/dev-sushi.png',
     tags: [
       'Next.js',
@@ -52,24 +52,24 @@ export const projects: Project[] = [
       'Tailwind CSS',
       'Zod',
       'React Hook Form',
-      'Shadcn-ui',
+      'Shadcn/ui',
       'Zustand',
       'TypeScript',
     ],
-
     repoUrl: 'https://github.com/ZanellaIgor/dev-sushi',
     category: 'frontend',
     details: {
       challenge:
-        'Criar uma aplicação com interface moderna, responsiva e que proporcionasse uma jornada de compra simples e eficiente, com integração externa para envio de pedidos.',
+        'Criar uma jornada de compra simples, moderna e responsiva, reduzindo atrito no fluxo de pedido e centralizando a experiência do usuário em uma interface objetiva.',
       solution:
-        'Utilização de componentes acessíveis com Shadcn-ui, gerenciamento de formulários com React Hook Form e validações com Zod. Implementado formulário multi-etapas com Zustand para controle de estado e envio automático de pedidos via WhatsApp.',
+        'A aplicação foi construída com Next.js, React, TypeScript e Tailwind CSS. O fluxo de pedido utiliza estado global com Zustand, validações com Zod, formulários com React Hook Form e componentes baseados em Shadcn/ui.',
       features: [
         'Carrinho de compras funcional',
-        'Formulário multi-etapas validado com Zod',
+        'Formulário multi-etapas com validação',
         'Envio de pedidos automatizado via WhatsApp',
-        'Tema escuro e claro com persistência de preferência',
-        'Layout responsivo e moderno com Tailwind CSS',
+        'Tema claro e escuro com persistência de preferência',
+        'Interface responsiva com Tailwind CSS',
+        'Componentes acessíveis com Shadcn/ui',
       ],
     },
   },
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     id: 3,
     title: 'Amigo Secreto - Sorteio Dinâmico',
     description:
-      'Aplicação fullstack para criação de eventos de Amigo Secreto, com suporte a grupos, cadastro de participantes via CPF e acesso individual ao resultado do sorteio.',
+      'Aplicação fullstack para criação de eventos de Amigo Secreto, com cadastro de participantes, grupos personalizados e acesso individual ao resultado do sorteio.',
     image: '/amigo-secreto.png',
     tags: [
       'Next.js',
@@ -88,20 +88,20 @@ export const projects: Project[] = [
       'Prisma',
       'Docker',
     ],
-
     repoUrl: 'https://github.com/ZanellaIgor/amigo-secreto',
     category: 'fullstack',
     details: {
       challenge:
-        'Criar um sistema completo e seguro para sorteios personalizados de Amigo Secreto, com acesso individual aos resultados e possibilidade de agrupamento dos participantes.',
+        'Criar um sistema de sorteio com persistência de dados, acesso individual ao resultado e suporte a agrupamento de participantes, mantendo uma experiência simples para o usuário final.',
       solution:
-        'Desenvolvimento de um backend com Node.js, Prisma e Docker para persistência e segurança dos dados, e um frontend com Next.js e Tailwind CSS para uma experiência fluida. O sorteio é vinculado a CPF, permitindo acesso único e seguro ao resultado.',
+        'A solução combina front-end em Next.js com Tailwind CSS e back-end em Node.js, Prisma e Docker. O sorteio é vinculado ao CPF do participante, permitindo consulta individual ao resultado de forma controlada.',
       features: [
-        'Criação de eventos de Amigo Secreto com ou sem grupos',
+        'Criação de eventos de Amigo Secreto',
         'Cadastro de participantes com identificação via CPF',
-        'Sistema de sorteio automático e seguro',
-        'Acesso individual ao resultado via link + CPF',
-        'Integração entre frontend Next.js e backend Node.js via API REST',
+        'Suporte a eventos com ou sem grupos',
+        'Sorteio automático e persistido',
+        'Acesso individual ao resultado via link e CPF',
+        'Integração entre front-end Next.js e API Node.js',
       ],
     },
   },

@@ -23,10 +23,11 @@ export const educations: IEducation[] = [
     degree: 'Pós-graduação Lato Sensu em Engenharia de Software',
     period: 'Jun 2024 - Dez 2024',
     description:
-      'Especialização com foco em ciclo de vida de software, engenharia de requisitos, projeto e teste de software, qualidade de software, gerenciamento de projetos, configuração e governança de TI.',
+      'Especialização voltada ao ciclo de vida de software, engenharia de requisitos, projeto, testes, qualidade de software, gerenciamento de projetos, configuração e governança de TI.',
     highlights: [
-      'Ênfase testes e boas práticas de engenharia',
-      'Desenvolvimento de habilidades em gestão de projetos e qualidade de software',
+      'Aprofundamento em engenharia de requisitos e qualidade de software',
+      'Base teórica para decisões técnicas, arquitetura e manutenção de sistemas',
+      'Ênfase em boas práticas de desenvolvimento, testes e gestão de projetos',
     ],
   },
   {
@@ -35,11 +36,11 @@ export const educations: IEducation[] = [
     degree: 'Bacharelado em Engenharia Elétrica',
     period: 'Jul 2012 - Dez 2021',
     description:
-      'Formação sólida em engenharia com foco em raciocínio lógico, resolução de problemas e sistemas eletrônicos, que contribuiu para a transição à área de tecnologia.',
+      'Formação em engenharia com forte base matemática, lógica, análise de sistemas técnicos e resolução de problemas complexos, contribuindo diretamente para a atuação em desenvolvimento de software e automação técnica.',
     highlights: [
-      'Desenvolvimento de pensamento analítico e estruturado',
-      'Base matemática e lógica aplicada em programação',
-      'Transição bem-sucedida para a área de software após a graduação',
+      'Desenvolvimento de raciocínio analítico e estruturado',
+      'Base técnica aplicada em lógica geométrica, automação e modelagem',
+      'Transição para desenvolvimento de software com visão de engenharia',
     ],
   },
 ];
@@ -51,7 +52,7 @@ export const certifications: ICertification[] = [
     issuer: 'Cod3r',
     date: 'Abr 2025',
     credentialId: 'b80da3c1-c444-4079-89c2-d43b42892cf6',
-    skills: ['NestJS', 'TypeScript'],
+    skills: ['NestJS', 'TypeScript', 'Node.js', 'APIs'],
   },
   {
     id: 2,
@@ -59,7 +60,7 @@ export const certifications: ICertification[] = [
     issuer: 'Cod3r',
     date: 'Mar 2025',
     credentialId: '00efc8b6-9657-42a8-9871-eda5e81cedb8',
-    skills: ['React', 'React Hooks'],
+    skills: ['React', 'React Hooks', 'Componentização'],
   },
   {
     id: 3,
@@ -67,7 +68,7 @@ export const certifications: ICertification[] = [
     issuer: 'Cod3r',
     date: 'Dez 2024',
     credentialId: '38f1deff-eb31-41c7-a117-9244c16d7f09',
-    skills: ['React', 'Tailwind CSS', 'React Hooks'],
+    skills: ['React', 'Tailwind CSS', 'React Hooks', 'UI'],
   },
   {
     id: 4,
@@ -75,7 +76,7 @@ export const certifications: ICertification[] = [
     issuer: 'Udemy',
     date: 'Out 2024',
     credentialId: 'UC-17496208-dc05-435d-9c39-da06d6b41fbe',
-    skills: ['NestJS', 'Node.js', 'Jest', 'TypeORM'],
+    skills: ['NestJS', 'Node.js', 'Jest', 'TypeORM', 'JWT'],
   },
   {
     id: 5,
@@ -114,7 +115,7 @@ export const certifications: ICertification[] = [
     issuer: 'Rocketseat',
     date: 'Jul 2024',
     credentialId: '7de9a332-ec01-409b-b5c6-6aa08ebe8122',
-    skills: ['Node.js'],
+    skills: ['Node.js', 'API REST'],
   },
   {
     id: 9,
