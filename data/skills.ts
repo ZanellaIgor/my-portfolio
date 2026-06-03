@@ -8,6 +8,7 @@ export const skillsData = {
     'Next.js',
     'Tailwind CSS',
     'Material UI',
+    'Chakra UI',
     'Shadcn/ui',
     'React Hook Form',
     'Zod',
