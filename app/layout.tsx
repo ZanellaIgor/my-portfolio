@@ -1,7 +1,6 @@
+import './globals.css';
 import type React from 'react';
 import type { Metadata, Viewport } from 'next';
-
-import './globals.css';
 
 import { cn } from '../lib/utils';
 import { fontSans } from '@/lib/fonts';
@@ -9,11 +8,31 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { profile } from '@/data/profile';
 
+const ogImageUrl = `${profile.urls.site}${profile.ogImage}`;
+
 export const metadata: Metadata = {
   title: profile.metaTitle,
   description: profile.metaDescription,
   applicationName: profile.applicationName,
   keywords: [...profile.seoKeywords],
+  alternates: {
+    canonical: profile.urls.site,
+  },
+  openGraph: {
+    title: profile.metaTitle,
+    description: profile.metaDescription,
+    url: profile.urls.site,
+    siteName: profile.applicationName,
+    locale: 'pt_BR',
+    type: 'website',
+    images: [{ url: ogImageUrl, alt: `Foto de ${profile.name}` }],
+  },
+  twitter: {
+    card: 'summary',
+    title: profile.metaTitle,
+    description: profile.metaDescription,
+    images: [ogImageUrl],
+  },
 };
 
 export const viewport: Viewport = {
