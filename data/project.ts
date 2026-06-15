@@ -3,13 +3,116 @@ import { Project } from '@/interfaces/project';
 export const projects: Project[] = [
   {
     id: 1,
+    title: 'Moderatio — Controle Financeiro',
+    description:
+      'Plataforma fullstack em produção para gestão de finanças pessoais e compartilhadas, com múltiplos workspaces, controle de transações, dívidas parceladas e dashboard financeiro.',
+    image: '/moderatio.png',
+    tags: [
+      'Next.js',
+      'React',
+      'Tailwind CSS',
+      'TanStack Query',
+      'Recharts',
+      'React Hook Form',
+      'Zod',
+      'NestJS',
+      'Prisma',
+      'PostgreSQL',
+      'Docker',
+      'TypeScript',
+      'JWT',
+      'Turborepo',
+      'pnpm',
+      'Sentry',
+      'next-intl',
+    ],
+    demoUrl: 'https://www.moderatiofinance.com/',
+    category: 'fullstack',
+    details: {
+      challenge:
+        'Criar uma plataforma financeira colaborativa com suporte a múltiplos workspaces, controle de acesso por papel e fluxos complexos como transações recorrentes, dívidas parceladas e convites de membros.',
+      solution:
+        'Monorepo com Turborepo e pnpm separando API (NestJS 11, Prisma 6, PostgreSQL, JWT) e Web (Next.js 16, React 19, TanStack Query 5, Tailwind CSS 4). Sentry para monitoramento em produção e internacionalização com next-intl.',
+      features: [
+        'Múltiplos workspaces pessoais e compartilhados',
+        'CRUD de contas, categorias e transações com impacto em saldo',
+        'Controle de dívidas únicas, parceladas e recorrentes',
+        'Dashboard financeiro com resumo semanal e mensal',
+        'RBAC por papel: Owner, Admin, Member e Viewer',
+        'Sistema de convites para membros',
+        'Monitoramento em produção com Sentry',
+        'Internacionalização com next-intl',
+        'Arquitetura monorepo com Turborepo e pacotes compartilhados',
+      ],
+    },
+  },
+  {
+    id: 2,
+    title: 'Quick Chat',
+    description:
+      'Plataforma de atendimento em tempo real com três papéis — cliente, agente e supervisor. Mensagens via WebSocket, RBAC completo no frontend e backend, upload de arquivos e dark mode.',
+    image: '/quick-chat.png',
+    images: [
+      '/quick-chat-demo.gif',
+      '/quick-chat.png',
+      '/quick-chat-login.png',
+      '/quick-chat-chat.png',
+      '/quick-chat-dark.png',
+    ],
+    tags: [
+      'Next.js',
+      'React',
+      'Material UI',
+      'Zustand',
+      'React Hook Form',
+      'Zod',
+      'NestJS',
+      'Prisma',
+      'PostgreSQL',
+      'Socket.IO',
+      'JWT',
+      'TypeScript',
+      'Turborepo',
+      'Docker',
+      'Swagger',
+    ],
+    repoUrl: 'https://github.com/ZanellaIgor/quick-chat',
+    category: 'fullstack',
+    details: {
+      challenge:
+        'Construir uma plataforma de atendimento multiusuário com comunicação bidirecional em tempo real, controle de acesso diferenciado por papel e experiência fluida no frontend.',
+      solution:
+        'API em NestJS com Socket.IO, Prisma e PostgreSQL. Frontend em Next.js com Material UI v7, Zustand e Socket.IO Client. Monorepo com Turborepo e aproximadamente 186 testes automatizados (Jest + Vitest).',
+      features: [
+        'Comunicação em tempo real via WebSocket (Socket.IO)',
+        'Três papéis distintos: cliente, agente e supervisor',
+        'RBAC aplicado no frontend e no backend',
+        'Dashboard operacional em tempo real para supervisores',
+        'Upload de arquivos e histórico paginado',
+        'Read receipts nas mensagens',
+        'Dark mode SSR-safe com Material UI v7',
+        'Aproximadamente 186 testes automatizados (Jest + Vitest)',
+      ],
+    },
+  },
+  {
+    id: 3,
     title: 'Gestor de Condomínios',
     description:
       'Aplicação fullstack para administração de condomínios, com painel administrativo, controle de usuários, avisos, manutenções, reservas e enquetes.',
-    image: '/condominium-admin.png',
+    image: '/condominium-dashboard.png',
+    images: [
+      '/condominium-dashboard.png',
+      '/condominium-admin.png',
+      '/condominium-maintenance.png',
+      '/condominium-warnings.png',
+    ],
     tags: [
       'React.js',
+      'Vite',
       'Material UI',
+      'React Router DOM',
+      'Axios',
       'NestJS',
       'Prisma',
       'PostgreSQL',
@@ -44,11 +147,17 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 2,
+    id: 4,
     title: 'Dev Sushi',
     description:
       'Aplicação web para uma loja fictícia de sushi, com interface responsiva, carrinho de compras, formulário multi-etapas e envio de pedidos via WhatsApp.',
     image: '/dev-sushi.png',
+    images: [
+      '/dev-sushi.png',
+      '/dev-sushi-dark.png',
+      '/dev-sushi-cart.png',
+      '/dev-sushi-multistep.png',
+    ],
     tags: [
       'Next.js',
       'React',
@@ -77,18 +186,27 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 3,
+    id: 5,
     title: 'Amigo Secreto - Sorteio Dinâmico',
     description:
       'Aplicação fullstack para criação de eventos de Amigo Secreto, com cadastro de participantes, grupos personalizados e acesso individual ao resultado do sorteio.',
     image: '/amigo-secreto.png',
+    images: [
+      '/amigo-secreto.png',
+      '/amigo-secreto-form.png',
+      '/amigo-secreto-consulta.png',
+    ],
     tags: [
       'Next.js',
       'React.js',
       'Tailwind CSS',
       'TypeScript',
+      'Zod',
+      'Axios',
       'Node.js',
+      'Express',
       'Prisma',
+      'PostgreSQL',
       'Docker',
     ],
     repos: {
@@ -100,7 +218,7 @@ export const projects: Project[] = [
       challenge:
         'Criar um sistema de sorteio com persistência de dados, acesso individual ao resultado e suporte a agrupamento de participantes, mantendo uma experiência simples para o usuário final.',
       solution:
-        'A solução combina front-end em Next.js com Tailwind CSS e back-end em Node.js, Prisma e Docker. O sorteio é vinculado ao CPF do participante, permitindo consulta individual ao resultado de forma controlada.',
+        'A solução combina front-end em Next.js com Tailwind CSS e back-end em Node.js, Express, Prisma e Docker. O sorteio é vinculado ao CPF do participante, permitindo consulta individual ao resultado de forma controlada.',
       features: [
         'Criação de eventos de Amigo Secreto',
         'Cadastro de participantes com identificação via CPF',

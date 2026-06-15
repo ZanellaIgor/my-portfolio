@@ -8,6 +8,7 @@ export interface Project {
   title: string;
   description: string;
   image: string;
+  images?: string[];
   tags: string[];
   demoUrl?: string;
   /** Repositório único (projetos monorepo ou só front-end) */
