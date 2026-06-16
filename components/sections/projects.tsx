@@ -19,7 +19,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from '../ui/dialog';
-import { Tabs, TabsList, TabsTrigger } from '../ui/tabs';
 import {
   ChevronLeft,
   ChevronRight,
@@ -33,6 +32,7 @@ import { projects } from '@/data/project';
 import { profile } from '@/data/profile';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { getProjectRepoLinks } from '@/lib/project-repos';
+import { cn } from '@/lib/utils';
 
 function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
   const [current, setCurrent] = useState(0);
@@ -68,7 +68,10 @@ function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
           {images.map((src, i) => (
             <div
               key={src}
-              className={`absolute inset-0 transition-opacity duration-300 ${i === current ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              className={cn(
+                'absolute inset-0 transition-opacity duration-300',
+                i === current ? 'opacity-100' : 'opacity-0 pointer-events-none',
+              )}
             >
               <Image
                 src={src}
@@ -105,7 +108,10 @@ function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
                     setCurrent(i);
                   }}
                   aria-label={`Ir para imagem ${i + 1}`}
-                  className={`w-2 h-2 rounded-full transition-colors ${i === current ? 'bg-white' : 'bg-white/40'}`}
+                  className={cn(
+                    'w-2 h-2 rounded-full transition-colors',
+                    i === current ? 'bg-white' : 'bg-white/40',
+                  )}
                 />
               ))}
             </div>
@@ -115,6 +121,7 @@ function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
 
       <Dialog open={lightbox} onOpenChange={setLightbox}>
         <DialogContent
+          closeClassName="text-white bg-black/50 hover:bg-black/70 ring-offset-black data-[state=open]:bg-black/50 data-[state=open]:text-white"
           style={{
             position: 'fixed',
             inset: 0,
@@ -176,7 +183,10 @@ function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
                   key={i}
                   onClick={() => setCurrent(i)}
                   aria-label={`Ir para imagem ${i + 1}`}
-                  className={`w-2 h-2 rounded-full transition-colors ${i === current ? 'bg-white' : 'bg-white/40'}`}
+                  className={cn(
+                    'w-2 h-2 rounded-full transition-colors',
+                    i === current ? 'bg-white' : 'bg-white/40',
+                  )}
                 />
               ))}
             </div>
@@ -245,18 +255,17 @@ function ProjectRepoButtonLinks({
 
 function ProjectCard({
   project,
+  reducedMotion,
   onOpen,
 }: {
   project: Project;
+  reducedMotion: boolean;
   onOpen: () => void;
 }) {
-  const reducedMotion = useReducedMotion();
-  const imageClassName = [
+  const imageClassName = cn(
     'object-cover transition-transform duration-300',
     !reducedMotion && 'group-hover:scale-105',
-  ]
-    .filter(Boolean)
-    .join(' ');
+  );
   const repoLinks = getProjectRepoLinks(project);
 
   return (
@@ -366,13 +375,29 @@ function ProjectModalBody({ project }: { project: Project }) {
   );
 }
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1 },
+  }),
+};
+
+const FILTERS = [
+  { value: 'all', label: 'Todos' },
+  { value: 'fullstack', label: 'Full Stack' },
+  { value: 'frontend', label: 'Frontend' },
+] as const;
+
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeFilter, setActiveFilter] = useState('all');
+  const reducedMotion = useReducedMotion();
 
   const filteredProjects = projects.filter((project) =>
-    activeTab === 'all' ? true : project.category === activeTab,
+    activeFilter === 'all' ? true : project.category === activeFilter,
   );
 
   return (
@@ -391,13 +416,27 @@ export function Projects() {
           </p>
         </motion.div>
 
-        <Tabs defaultValue="all" onValueChange={setActiveTab}>
-          <TabsList className="flex flex-wrap justify-center gap-2 mb-8">
-            <TabsTrigger value="all">Todos</TabsTrigger>
-            <TabsTrigger value="fullstack">Full Stack</TabsTrigger>
-            <TabsTrigger value="frontend">Frontend</TabsTrigger>
-          </TabsList>
-        </Tabs>
+        <div
+          role="group"
+          aria-label="Filtrar projetos"
+          className="flex flex-wrap justify-center gap-2 mb-8"
+        >
+          {FILTERS.map(({ value, label }) => (
+            <button
+              key={value}
+              onClick={() => setActiveFilter(value)}
+              aria-pressed={activeFilter === value}
+              className={cn(
+                'inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                activeFilter === value
+                  ? 'bg-background text-foreground shadow'
+                  : 'text-muted-foreground hover:bg-background/50 hover:text-foreground',
+              )}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
 
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <div className="grid md:grid-cols-2 gap-6">
@@ -408,17 +447,11 @@ export function Projects() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: (i: number) => ({
-                    opacity: 1,
-                    y: 0,
-                    transition: { delay: i * 0.1 },
-                  }),
-                }}
+                variants={cardVariants}
               >
                 <ProjectCard
                   project={project}
+                  reducedMotion={reducedMotion}
                   onOpen={() => {
                     setSelectedProject(project);
                     setIsOpen(true);
